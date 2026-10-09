@@ -22,6 +22,10 @@ import static com.hlysine.create_connected.content.freewheelclutch.FreewheelClut
 
 public class CCEncasedBlockStateGens extends EncasedBlockStateGens {
 
+    public static <T extends Block> NonNullBiConsumer<DataGenContext<Block, T>, RegistrateBlockstateProvider> shearPin(String shearPin) {
+        return (ctx, prov) -> axisBlock(ctx, prov, shearPinModel(prov, shearPin), false);
+    }
+
     public static <T extends Block> NonNullBiConsumer<DataGenContext<Block, T>, RegistrateBlockstateProvider> parallelgearbox(String casing) {
         return (ctx, prov) -> axisBlock(ctx, prov, parallelGearboxModel(prov, casing, "block_y"));
     }
@@ -203,7 +207,7 @@ public class CCEncasedBlockStateGens extends EncasedBlockStateGens {
                         .texture("0", getCentrifugalClutchTexture(casing, uncoupled))
                         .texture("1", getGearboxTexture(casing))
                         .texture("2", getFunnelFrameTexture(casing))
-                        .texture("particle", getFreewheelClutchTexture(casing, uncoupled));
+                        .texture("particle", getCentrifugalClutchTexture(casing, uncoupled));
             };
         return null;
     }
@@ -214,7 +218,7 @@ public class CCEncasedBlockStateGens extends EncasedBlockStateGens {
                 .texture("0", getCentrifugalClutchTexture(casing, false))
                 .texture("1", getGearboxTexture(casing))
                 .texture("4", getFunnelFrameTexture(casing))
-                .texture("particle", getFreewheelClutchTexture(casing, false));
+                .texture("particle", getCentrifugalClutchTexture(casing, false));
     }
 
     public static <T> Function<BlockState, ModelFile> overstressClutchModel(RegistrateProvider p, String casing) {
@@ -258,6 +262,19 @@ public class CCEncasedBlockStateGens extends EncasedBlockStateGens {
                 .texture(topKey, getCasingTexture(casing))
                 .texture(casingKey, getParallelGearboxTexture(casing))
                 .texture("particle", getCasingTexture(casing)) : null;
+    }
+
+    public static <T> ModelFile shearPinModel(RegistrateProvider p, String shaft) {
+        if (isValidProvider(p)) {
+            ModelBuilder<? extends ModelBuilder<?>> file = Objects.requireNonNull(createModelInBlock(p, "shear_pin/" + shaft))
+                    .parent(new ModelFile.UncheckedModelFile("create_connected:block/shear_pin"))
+                    .texture("0", getShaftTexture(shaft))
+                    .texture("1", getShaftTexture(shaft) + (!shaft.equals("mldeg") ? "_top" : ""))
+                    .texture("particle", getShaftTexture(shaft));
+            if (shaft.equals("glass")) file = file.renderType("cutout_mipped");
+            return file;
+        }
+        return null;
     }
 
     public static String getChainWheelSideTexture(String casing) {

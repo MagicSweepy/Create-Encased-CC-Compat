@@ -21,16 +21,16 @@ public class CCEConfigs {
 	private static final Map<ModConfig.Type, ConfigBase> CONFIGS = new EnumMap<>(ModConfig.Type.class);
 
 	//private static CCEClient client;
-	//private static CCECommon common;
+	private static CCECommon common;
 	private static CCEServer server;
 
 //	public static CCEClient client() {
 //		return client;
 //	}
 
-//	public static CCECommon common() {
-//		return common;
-//	}
+	public static CCECommon common() {
+		return common;
+	}
 
 	public static CCEServer server() {
 		return server;
@@ -55,7 +55,7 @@ public class CCEConfigs {
 
 	public static void register(ModContainer container) {
 		//client = register(CClient::new, ModConfig.Type.CLIENT);
-		//common = register(CCECommon::new, ModConfig.Type.COMMON);
+		common = register(CCECommon::new, ModConfig.Type.COMMON);
 		server = register(CCEServer::new, ModConfig.Type.SERVER);
 
 		for (Map.Entry<ModConfig.Type, ConfigBase> pair : CONFIGS.entrySet())

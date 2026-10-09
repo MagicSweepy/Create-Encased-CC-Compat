@@ -1,0 +1,14 @@
+{
+  "type": "create:cutting",
+  "ingredients": [
+    {
+      "tag": "c:ingots/zinc"
+    }
+  ],
+  "processingTime": 200,
+  "results": [
+    {
+      "id": "create_connected_encased:zinc_shear_pin"
+    }
+  ]
+}

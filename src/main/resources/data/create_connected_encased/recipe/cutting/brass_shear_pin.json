@@ -1,0 +1,14 @@
+{
+  "type": "create:cutting",
+  "ingredients": [
+    {
+      "item": "createcasing:brass_shaft"
+    }
+  ],
+  "processingTime": 200,
+  "results": [
+    {
+      "id": "create_connected_encased:brass_shear_pin"
+    }
+  ]
+}

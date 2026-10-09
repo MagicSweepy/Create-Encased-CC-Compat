@@ -1,0 +1,14 @@
+{
+  "type": "create:cutting",
+  "ingredients": [
+    {
+      "item": "createcasing:dark_oak_shaft"
+    }
+  ],
+  "processingTime": 200,
+  "results": [
+    {
+    "id": "create_connected_encased:dark_oak_shear_pin"
+    }
+  ]
+}

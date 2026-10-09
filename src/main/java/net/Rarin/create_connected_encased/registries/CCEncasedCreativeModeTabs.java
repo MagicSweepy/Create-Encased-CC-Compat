@@ -9,6 +9,7 @@ import net.Rarin.create_connected_encased.CCEncased;
 import net.Rarin.create_connected_encased.casings.CCasingSet;
 import net.Rarin.create_connected_encased.casings.CCasingSets;
 import net.Rarin.create_connected_encased.client.ClientItemPredicates;
+import net.Rarin.create_connected_encased.transmissions.CCETransmissionSets;
 import net.createmod.catnip.platform.CatnipServices;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
@@ -38,24 +39,12 @@ public class CCEncasedCreativeModeTabs {
                     .title(Component.translatable("itemGroup." + CCEncased.ID + ".base"))
                     .withTabsBefore(EncasedCreativeModeTabs.MAIN_TAB.getKey())
                     .icon(() -> CCasingSets.BRASS.getChainCogwheel().asItem().getDefaultInstance())
-                    //.displayItems(new ItemDisplay())
                     .displayItems(new CCEncasedCreativeModeTabs.RegistrateDisplayItemsGenerator(true, CCEncasedCreativeModeTabs.MAIN_TAB))
                     .build());
 
     public static void register(IEventBus modEventBus) {
         TAB_REGISTER.register(modEventBus);
     }
-
-//    public static class ItemDisplay implements CreativeModeTab.DisplayItemsGenerator {
-//
-//        @Override
-//        public void accept(CreativeModeTab.ItemDisplayParameters parameters, CreativeModeTab.Output output) {
-//            CCEncased.REGISTRATE.getAll(Registries.ITEM)
-//                    .forEach(entry -> output.accept(entry.get()));
-//        }
-//    }
-//
-//}
 
     public static class RegistrateDisplayItemsGenerator implements CreativeModeTab.DisplayItemsGenerator {
         private static final Predicate<Item> IS_ITEM_3D_PREDICATE;
@@ -78,7 +67,7 @@ public class CCEncasedCreativeModeTabs {
         private static Predicate<Item> makeExclusionPredicate() {
             Set<Item> exclusions = new ReferenceOpenHashSet<>();
             exclusions.addAll(CCEncased.hidedItems.stream().map(ItemLike::asItem).toList());
-            // exclusions.add(TransmissionSets.MLDEG.getShaft().asItem());
+            exclusions.add(CCETransmissionSets.MLDEG.getShearPin().asItem());
             return exclusions::contains;
         }
 

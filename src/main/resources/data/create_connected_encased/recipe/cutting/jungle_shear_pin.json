@@ -1,0 +1,14 @@
+{
+  "type": "create:cutting",
+  "ingredients": [
+    {
+      "item": "createcasing:jungle_shaft"
+    }
+  ],
+  "processingTime": 200,
+  "results": [
+    {
+    "id": "create_connected_encased:jungle_shear_pin"
+    }
+  ]
+}

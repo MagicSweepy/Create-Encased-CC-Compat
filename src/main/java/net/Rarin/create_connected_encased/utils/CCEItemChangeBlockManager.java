@@ -5,6 +5,9 @@ import fr.iglee42.createcasing.config.EncasedConfigs;
 import net.Rarin.create_connected_encased.CCEncased;
 import net.Rarin.create_connected_encased.casings.CCasingSet;
 import net.Rarin.create_connected_encased.casings.CCasingSets;
+import net.Rarin.create_connected_encased.config.CCEConfigs;
+import net.Rarin.create_connected_encased.transmissions.CCETransmissionSet;
+import net.Rarin.create_connected_encased.transmissions.CCETransmissionSets;
 import net.minecraft.core.Direction;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.item.Item;
@@ -28,7 +31,7 @@ public class CCEItemChangeBlockManager {
         if (level.getBlockState(event.getPos()).isAir()) return;
         BlockState state = level.getBlockState(event.getPos());
         CCasingSet casingSet;
-        if ((casingSet = getSetForCasing(event.getItemStack().getItem())) != null && EncasedConfigs.common().kinetics.casingBlockSwappable.get()) {
+        if ((casingSet = getSetForCasing(event.getItemStack().getItem())) != null && EncasedConfigs.common().kinetics.casingBlockSwappable.get() && CCEConfigs.common().casingBlockSwappable.get() ) {
             if (casingSet.isInSet(state.getBlock())) return;
             if (isElementInSet(state, CCasingSet::getChainCogwheel) && casingSet.getChainCogwheel() != null)
                 changeAxisBlock(event, state, level, casingSet.getChainCogwheel().defaultBlockState());
@@ -49,6 +52,13 @@ public class CCEItemChangeBlockManager {
             if (isElementInSet(state, CCasingSet::getOverstressClutch) && casingSet.getOverstressClutch() != null)
                 changeAxisBlock(event, state, level, casingSet.getOverstressClutch().defaultBlockState());
 
+        }
+        CCETransmissionSet transmissionSet;
+
+        if ((transmissionSet = getSetForItem(event.getItemStack().getItem())) != null) {
+            if (transmissionSet.isInSet(state.getBlock())) return;
+            if (isShearPin(state) && transmissionSet.getShearPin() != null)
+                changeAxisBlock(event, state, level, transmissionSet.getShearPin().defaultBlockState());
         }
     }
 
@@ -81,7 +91,19 @@ public class CCEItemChangeBlockManager {
                     .orElse(null);
         }
 
-    public static boolean isElementInSet(BlockState state, Function<CCasingSet, Block> function) {
-        return CCasingSets.getSets().stream().filter((set) -> function.apply(set) != null).anyMatch((set) -> state.getBlock().equals(function.apply(set)));
+    private static CCETransmissionSet getSetForItem(Item item){
+        return CCETransmissionSets.getSets().stream()
+                .filter(set->set.getItem() != null)
+                .filter(set->set.getItem().equals(item))
+                .findFirst()
+                .orElse(null);
+    }
+
+    public static boolean isElementInSet(BlockState state, Function<CCasingSet,Block> function){
+        return CCasingSets.getSets().stream().filter(set->function.apply(set) != null).anyMatch(set->state.getBlock().equals(function.apply(set)));
+    }
+
+    public static boolean isShearPin(BlockState state){
+        return CCETransmissionSets.getSets().stream().filter(set->set.getShearPin() != null).anyMatch(set->state.getBlock().equals(set.getShearPin()));
     }
 }

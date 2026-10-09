@@ -1,5 +1,6 @@
 package net.Rarin.create_connected_encased;
 
+import net.Rarin.create_connected_encased.registries.CCEncasedPartialModels;
 import net.Rarin.create_connected_encased.registries.CCEncasedPonderPlugin;
 import net.createmod.ponder.foundation.PonderIndex;
 import net.neoforged.api.distmarker.Dist;
@@ -16,6 +17,7 @@ public class CCEncasedClient {
     }
 
     public static void init(final FMLClientSetupEvent event) {
+        CCEncasedPartialModels.init();
 
         PonderIndex.addPlugin(new CCEncasedPonderPlugin());
     }

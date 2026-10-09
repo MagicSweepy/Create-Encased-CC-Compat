@@ -31,10 +31,10 @@ public class RotationPropagatorMixin {
         boolean fromEncased = stateFrom.getBlock() instanceof CustomChainCogwheelBlock;
         boolean toEncased = stateTo.getBlock() instanceof CustomChainCogwheelBlock;
 
-        boolean fromChain = stateFrom.getBlock() instanceof ChainCogwheelBlock;
-        boolean toChain = stateTo.getBlock() instanceof ChainCogwheelBlock;
+        boolean fromConnected = stateFrom.getBlock() instanceof ChainCogwheelBlock;
+        boolean toConnected = stateTo.getBlock() instanceof ChainCogwheelBlock;
 
-        if ((fromEncased || fromChain) && (toEncased || toChain)) {
+        if ((fromEncased || fromConnected) && (toEncased || toConnected)) {
             if (direction == null) {
                 cir.setReturnValue(0f);
                 return;

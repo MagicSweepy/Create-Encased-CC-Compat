@@ -1,6 +1,5 @@
 package net.Rarin.create_connected_encased.config;
 
-import com.simibubi.create.Create;
 import com.tterrag.registrate.builders.BlockBuilder;
 import com.tterrag.registrate.util.nullness.NonNullUnaryOperator;
 import it.unimi.dsi.fastutil.objects.Object2DoubleMap;
@@ -34,7 +33,7 @@ public class CCEStress extends ConfigBase {
 		DEFAULT_IMPACTS.forEach((id, value) -> this.impacts.put(id, builder.define(id.getPath(), value)));
 		builder.pop();
 
-		builder.comment(".", Comments.su, Comments.capacity)
+		builder.comment(".",Comments.su, Comments.capacity)
 				.push("capacity");
 		DEFAULT_CAPACITIES.forEach((id, value) -> this.capacities.put(id, builder.define(id.getPath(), value)));
 		builder.pop();
@@ -66,7 +65,7 @@ public class CCEStress extends ConfigBase {
 	public static <B extends Block, P> NonNullUnaryOperator<BlockBuilder<B, P>> setImpact(double value) {
 		return builder -> {
 			assertFromCCE(builder);
-			ResourceLocation id = Create.asResource(builder.getName());
+			ResourceLocation id = CCEncased.asResource(builder.getName());
 			DEFAULT_IMPACTS.put(id, value);
 			return builder;
 		};
@@ -75,7 +74,7 @@ public class CCEStress extends ConfigBase {
 	public static <B extends Block, P> NonNullUnaryOperator<BlockBuilder<B, P>> setCapacity(double value) {
 		return builder -> {
 			assertFromCCE(builder);
-			ResourceLocation id = Create.asResource(builder.getName());
+			ResourceLocation id = CCEncased.asResource(builder.getName());
 			DEFAULT_CAPACITIES.put(id, value);
 			return builder;
 		};

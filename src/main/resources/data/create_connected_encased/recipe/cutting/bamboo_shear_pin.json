@@ -1,0 +1,14 @@
+{
+  "type": "create:cutting",
+  "ingredients": [
+    {
+      "item": "createcasing:bamboo_shaft"
+    }
+  ],
+  "processingTime": 200,
+  "results": [
+    {
+    "id": "create_connected_encased:bamboo_shear_pin"
+    }
+  ]
+}

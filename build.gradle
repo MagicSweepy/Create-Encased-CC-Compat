@@ -86,6 +86,10 @@ dependencies {
     implementation "maven.modrinth:create-Encased:${create_encased_version}"
     implementation "maven.modrinth:create-connected:${create_connected_version}"
     implementation "maven.modrinth:hezpkOYP:S6xZzbRg"
+
+    implementation "maven.modrinth:T8bvmqVZ:g9Lmjjc5"
+    implementation "maven.modrinth:RpH8tmT1:j7UkVY7e"
+    implementation "maven.modrinth:sHO3MhQx:BOTN7zzN"
 }
 
 var generateModMetadata = tasks.register("generateModMetadata", ProcessResources) {

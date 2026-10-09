@@ -4,6 +4,7 @@ import com.hlysine.create_connected.config.FeatureCategory;
 import com.hlysine.create_connected.config.FeatureToggle;
 import com.hlysine.create_connected.content.fluidvessel.FluidVesselItem;
 import com.hlysine.create_connected.content.parallelgearbox.ParallelGearboxBlock;
+import com.hlysine.create_connected.content.shearpin.ShearPinBlock;
 import com.hlysine.create_connected.registries.CCDisplaySources;
 import com.hlysine.create_connected.registries.CCMountedStorageTypes;
 import com.simibubi.create.api.connectivity.ConnectivityHandler;
@@ -11,23 +12,28 @@ import com.simibubi.create.api.contraption.BlockMovementChecks;
 import com.simibubi.create.content.decoration.encasing.CasingConnectivity;
 import com.simibubi.create.content.decoration.encasing.EncasedCTBehaviour;
 import com.simibubi.create.content.fluids.tank.FluidTankMovementBehavior;
+import com.simibubi.create.content.kinetics.simpleRelays.BracketedKineticBlockModel;
 import com.simibubi.create.foundation.block.connected.CTSpriteShiftEntry;
 import com.simibubi.create.foundation.data.AssetLookup;
 import com.simibubi.create.foundation.data.CreateRegistrate;
 import com.simibubi.create.foundation.data.SharedProperties;
 import com.tterrag.registrate.builders.BlockBuilder;
 import com.tterrag.registrate.util.entry.BlockEntry;
-import net.Rarin.create_connected_encased.client.ClientModelWrappers;
 import net.Rarin.create_connected_encased.blocks.*;
 import net.Rarin.create_connected_encased.casings.CCasingSets;
+import net.Rarin.create_connected_encased.client.ClientModelWrappers;
 import net.Rarin.create_connected_encased.config.CCEStress;
+import net.Rarin.create_connected_encased.transmissions.CCETransmissionSets;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.state.BlockBehaviour;
+import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.material.MapColor;
 
 import java.util.Objects;
 import java.util.function.BiConsumer;
+import java.util.function.Function;
 import java.util.function.Supplier;
 
 import static com.simibubi.create.api.behaviour.display.DisplaySource.displaySource;
@@ -38,6 +44,7 @@ import static com.simibubi.create.foundation.data.TagGen.pickaxeOnly;
 import static net.Rarin.create_connected_encased.CCEncased.REGISTRATE;
 import static net.Rarin.create_connected_encased.registries.CCEncasedBlockStateGens.*;
 
+@SuppressWarnings("removal")
 public class CCEncasedBlocks {
 
     static {
@@ -45,104 +52,97 @@ public class CCEncasedBlocks {
     }
 
     public static BlockEntry<CustomChainCogwheelBlock> createChainWheel(String name) {
-        return REGISTRATE.block(name + "_encased_chain_cogwheel",p-> new CustomChainCogwheelBlock(p, name))
+        return REGISTRATE.block(name + "_encased_chain_cogwheel", p -> new CustomChainCogwheelBlock(p, name))
                 .initialProperties(SharedProperties::stone)
                 .properties(p -> p.noOcclusion().mapColor(MapColor.PODZOL))
                 .addLayer(() -> RenderType::cutoutMipped)
                 .transform(CCEStress.setNoImpact())
-                .transform(FeatureToggle.register(FeatureCategory.KINETIC))
                 .transform(axeOrPickaxe())
-                .blockstate( CCEncasedBlockStateGens.encasedChainWheel(name))
+                .blockstate(CCEncasedBlockStateGens.encasedChainWheel(name))
                 .item()
-                .model((c,p)->p.getBuilder(c.getName()).parent(Objects.requireNonNull(createChainWheelModel(p, name,true,"item"))))
+                .model((c, p) -> p.getBuilder(c.getName()).parent(Objects.requireNonNull(createChainWheelModel(p, name, true, "item"))))
                 .build()
                 .register();
     }
 
     public static BlockEntry<CustomBrakeBlock> createBrake(String name) {
-        return REGISTRATE.block(name + "_brake", p-> new  CustomBrakeBlock(p, name))
+        return REGISTRATE.block(name + "_brake", p -> new CustomBrakeBlock(p, name))
                 .initialProperties(SharedProperties::stone)
                 .properties(p -> p.noOcclusion().mapColor(MapColor.PODZOL))
                 .addLayer(() -> RenderType::cutoutMipped)
                 .transform(CCEStress.setNoImpact())
-                .transform(FeatureToggle.register(FeatureCategory.KINETIC))
                 .transform(axeOrPickaxe())
-                .blockstate((c, p) -> CCEncasedBlockStateGens.axisBlock(c,p,brakeModel(p,name),false))
+                .blockstate((c, p) -> CCEncasedBlockStateGens.axisBlock(c, p, brakeModel(p, name), false))
                 .item()
-                .model((c,p)->p.getBuilder(c.getName()).parent(brakeItemModel(p,name)))
+                .model((c, p) -> p.getBuilder(c.getName()).parent(brakeItemModel(p, name)))
                 .build()
                 .register();
     }
 
     public static BlockEntry<CustomParallelGearboxBlock> createParallelGearbox(String name, CTSpriteShiftEntry sprite, Supplier<BlockItem> item) {
-        BlockBuilder<CustomParallelGearboxBlock,CreateRegistrate> entry = REGISTRATE.block(name + "_parallel_gearbox", p -> new CustomParallelGearboxBlock(p, item))
+        BlockBuilder<CustomParallelGearboxBlock, CreateRegistrate> entry = REGISTRATE.block(name + "_parallel_gearbox", p -> new CustomParallelGearboxBlock(p, item))
                 .initialProperties(SharedProperties::stone)
                 .properties(p -> p.noOcclusion().mapColor(MapColor.PODZOL))
                 .transform(CCEStress.setNoImpact())
-                .transform(FeatureToggle.register(FeatureCategory.KINETIC))
                 .transform(axeOrPickaxe())
                 .blockstate(parallelgearbox(name));
-        entry = connectedTexture(entry,sprite,(block, cc) -> cc.make(block, sprite,
+        entry = connectedTexture(entry, sprite, (block, cc) -> cc.make(block, sprite,
                 (s, f) -> f.getAxis() == s.getValue(ParallelGearboxBlock.AXIS)));
         return entry.item()
-                .model((ctx,prov)->prov.getBuilder(ctx.getName()).parent(Objects.requireNonNull(parallelGearboxModel(prov, name, "item"))))
+                .model((ctx, prov) -> prov.getBuilder(ctx.getName()).parent(Objects.requireNonNull(parallelGearboxModel(prov, name, "item"))))
                 .build()
                 .register();
     }
 
-    public static BlockEntry<CustomSixWayGearboxBlock> createSixWayGearbox(String name, Supplier<BlockItem> item){
-        BlockBuilder<CustomSixWayGearboxBlock,CreateRegistrate> entry = REGISTRATE.block(name + "_six_way_gearbox", p -> new CustomSixWayGearboxBlock(p, item))
+    public static BlockEntry<CustomSixWayGearboxBlock> createSixWayGearbox(String name, Supplier<BlockItem> item) {
+        BlockBuilder<CustomSixWayGearboxBlock, CreateRegistrate> entry = REGISTRATE.block(name + "_six_way_gearbox", p -> new CustomSixWayGearboxBlock(p, item))
                 .initialProperties(SharedProperties::stone)
                 .properties(p -> p.noOcclusion().mapColor(MapColor.PODZOL))
                 .addLayer(() -> RenderType::cutoutMipped)
                 .transform(CCEStress.setNoImpact())
-                .transform(FeatureToggle.register(FeatureCategory.KINETIC))
                 .transform(axeOrPickaxe())
                 //.lang(name + " 6-way Gearbox")
                 .blockstate(sixWaygearbox(name));
         return entry.item()
-                .model((ctx,prov)->prov.getBuilder(ctx.getName()).parent(Objects.requireNonNull(sixWayGearboxModel(prov, name, "item"))))
+                .model((ctx, prov) -> prov.getBuilder(ctx.getName()).parent(Objects.requireNonNull(sixWayGearboxModel(prov, name, "item"))))
                 .build()
                 .register();
     }
 
     public static BlockEntry<CustomInvertedGearShiftBlock> createInvertedGearShift(String name) {
-        return REGISTRATE.block(name + "_inverted_gearshift", p-> new  CustomInvertedGearShiftBlock(p, name))
+        return REGISTRATE.block(name + "_inverted_gearshift", p -> new CustomInvertedGearShiftBlock(p, name))
                 .initialProperties(SharedProperties::stone)
                 .properties(p -> p.noOcclusion().mapColor(MapColor.PODZOL))
                 .addLayer(() -> RenderType::cutoutMipped)
                 .transform(CCEStress.setNoImpact())
-                .transform(FeatureToggle.register(FeatureCategory.KINETIC))
                 .transform(axeOrPickaxe())
-                .blockstate((c, p) -> CCEncasedBlockStateGens.axisBlock(c,p,invertedGearshiftModel(p, name),false))
+                .blockstate((c, p) -> CCEncasedBlockStateGens.axisBlock(c, p, invertedGearshiftModel(p, name), false))
                 .item()
-                .model((c,p)->p.getBuilder(c.getName()).parent(invertedGearshiftItemModel(p, name)))
+                .model((c, p) -> p.getBuilder(c.getName()).parent(invertedGearshiftItemModel(p, name)))
                 .build()
                 .register();
     }
 
     public static BlockEntry<CustomInvertedClutchBlock> createInvertedClutch(String name) {
-        return REGISTRATE.block(name + "_inverted_clutch", p-> new  CustomInvertedClutchBlock(p, name))
+        return REGISTRATE.block(name + "_inverted_clutch", p -> new CustomInvertedClutchBlock(p, name))
                 .initialProperties(SharedProperties::stone)
                 .properties(p -> p.noOcclusion().mapColor(MapColor.PODZOL))
                 .addLayer(() -> RenderType::cutoutMipped)
                 .transform(CCEStress.setNoImpact())
-                .transform(FeatureToggle.register(FeatureCategory.KINETIC))
                 .transform(axeOrPickaxe())
-                .blockstate((c, p) -> CCEncasedBlockStateGens.axisBlock(c,p,invertedClutchModel(p,name),false))
+                .blockstate((c, p) -> CCEncasedBlockStateGens.axisBlock(c, p, invertedClutchModel(p, name), false))
                 .item()
-                .model((c,p)->p.getBuilder(c.getName()).parent(invertedClutchItemModel(p,name)))
+                .model((c, p) -> p.getBuilder(c.getName()).parent(invertedClutchItemModel(p, name)))
                 .build()
                 .register();
     }
 
-    public static BlockEntry<CustomCentrifugalClutchBlock> createCentrifugalClutch (String name) {
+    public static BlockEntry<CustomCentrifugalClutchBlock> createCentrifugalClutch(String name) {
         return REGISTRATE.block(name + "_centrifugal_clutch", p -> new CustomCentrifugalClutchBlock(p, name))
                 .initialProperties(SharedProperties::stone)
                 .properties(p -> p.noOcclusion().mapColor(MapColor.PODZOL))
                 .addLayer(() -> RenderType::cutoutMipped)
                 .transform(CCEStress.setNoImpact())
-                .transform(FeatureToggle.register(FeatureCategory.KINETIC))
                 .transform(axeOrPickaxe())
                 .blockstate((c, p) -> p.directionalBlock(c.get(), centrifugalClutchModel(p, name)))
                 .item()
@@ -152,13 +152,12 @@ public class CCEncasedBlocks {
     }
 
 
-    public static BlockEntry<CustomFreewheelClutchBlock>  createFreewheelClutch(String name) {
+    public static BlockEntry<CustomFreewheelClutchBlock> createFreewheelClutch(String name) {
         return REGISTRATE.block(name + "_freewheel_clutch", p -> new CustomFreewheelClutchBlock(p, name))
                 .initialProperties(SharedProperties::stone)
                 .properties(p -> p.noOcclusion().mapColor(MapColor.PODZOL))
                 .addLayer(() -> RenderType::cutoutMipped)
                 .transform(CCEStress.setNoImpact())
-                .transform(FeatureToggle.register(FeatureCategory.KINETIC))
                 .transform(axeOrPickaxe())
                 .blockstate((c, p) -> p.directionalBlock(c.get(), freewheelClutchModel(p, name)))
                 .item()
@@ -173,9 +172,8 @@ public class CCEncasedBlocks {
                 .properties(p -> p.noOcclusion().mapColor(MapColor.PODZOL))
                 .addLayer(() -> RenderType::cutoutMipped)
                 .transform(CCEStress.setNoImpact())
-                .transform(FeatureToggle.register(FeatureCategory.KINETIC))
                 .transform(axeOrPickaxe())
-                .blockstate((c, p) -> CCEncasedBlockStateGens.axisBlock(c,p,overstressClutchModel(p,name),false))
+                .blockstate((c, p) -> CCEncasedBlockStateGens.axisBlock(c, p, overstressClutchModel(p, name), false))
                 .item()
                 .model((c, p) -> p.getBuilder(c.getName()).parent(overstressClutchItemModel(p, name)))
                 .build()
@@ -205,8 +203,23 @@ public class CCEncasedBlocks {
                 .register();
     }
 
-    private static <T extends Block> BlockBuilder<T, CreateRegistrate> connectedTexture(BlockBuilder<T, CreateRegistrate> entry, CTSpriteShiftEntry sprite, BiConsumer<T, CasingConnectivity> consumer){
-        if (sprite != null){
+    public static BlockEntry<ShearPinBlock> createShearPin(String name, Function<BlockBehaviour.Properties, ? extends ShearPinBlock> factory) {
+        return REGISTRATE.block(name + "_shear_pin", (p) -> factory != null ? factory.apply(p) : new CustomShearPinBlock(p))
+                .initialProperties(SharedProperties::stone)
+                .properties(p -> p.mapColor(MapColor.METAL).forceSolidOn())
+                .transform(CCEStress.setNoImpact())
+                .transform(FeatureToggle.register(FeatureCategory.KINETIC))
+                .transform(pickaxeOnly())
+                .blockstate(CCEncasedBlockStateGens.shearPin(name))
+                .onRegister(CreateRegistrate.blockModel(() -> BracketedKineticBlockModel::new))
+                .item()
+                .model((c, p) -> p.getBuilder(c.getName()).parent(Objects.requireNonNull(shearPinModel(p, name))))
+                .build()
+                .register();
+    }
+
+    private static <T extends Block> BlockBuilder<T, CreateRegistrate> connectedTexture(BlockBuilder<T, CreateRegistrate> entry, CTSpriteShiftEntry sprite, BiConsumer<T, CasingConnectivity> consumer) {
+        if (sprite != null) {
             return entry.onRegister(CreateRegistrate.connectedTextures(() -> new EncasedCTBehaviour(sprite)))
                     .onRegister(CreateRegistrate.casingConnectivity(consumer));
         }
@@ -225,7 +238,7 @@ public class CCEncasedBlocks {
                 set.setBrake(createBrake(set.getName()));
 
             if (set.doesGenerateParallelGearbox())
-                set.setParallelGearbox(createParallelGearbox(set.getName(),set.getConnectedTextureSprite(), set::getVerticalParallelGearboxItem));
+                set.setParallelGearbox(createParallelGearbox(set.getName(), set.getConnectedTextureSprite(), set::getVerticalParallelGearboxItem));
 
             if (set.doesGenerateSixWayGearbox())
                 set.setSixWayGearbox(createSixWayGearbox(set.getName(), set::getVerticalSixWayGearboxItem));
@@ -246,8 +259,19 @@ public class CCEncasedBlocks {
                 set.setOverstressClutch(createOverstressClutch(set.getName()));
 
             if (set.doesGenerateFluidVessel())
-                set.setFluidVessel(createFluidVessel(set.getName(),set.getTankSideSprite(),set.getTankTopSprite(),set.getTankInnerSprite()));
+                set.setFluidVessel(createFluidVessel(set.getName(), set.getTankSideSprite(), set.getTankTopSprite(), set.getTankInnerSprite()));
 
         });
+
+        CCETransmissionSets.getSets().forEach(set -> {
+            if (set.doesGenerateShearPin())
+                set.setShearPin(createShearPin(set.getName(), set.getShearPinConstructor()));
+        });
+    }
+
+    public static boolean isWoodenShaftHasState(BlockState state) {
+
+        return state.getBlock() instanceof WoodenShearPinBlock;
+
     }
 }

@@ -4,6 +4,6 @@
     "0": "create_connected_encased:block/centrifugal_clutch_on/shadow_steel",
     "1": "createcasing:block/gearbox/shadow_steel",
     "2": "createcasing:block/funnel_frame/shadow_steel",
-    "particle": "create_connected_encased:block/freewheel_clutch_on/shadow_steel"
+    "particle": "create_connected_encased:block/centrifugal_clutch_on/shadow_steel"
   }
 }

@@ -7,7 +7,7 @@ modId = "${mod_id}"
 version = "${mod_version}"
 displayName = "${mod_name}"
 authors = "Rarin"
-description = "*"
+description = "Adds the use of casing on Create: Connected blocks"
 logoFile="logo.png"
 
 [[mixins]]

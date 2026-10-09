@@ -14,6 +14,7 @@ import com.hlysine.create_connected.content.parallelgearbox.ParallelGearboxVisua
 import com.hlysine.create_connected.content.sixwaygearbox.SixWayGearboxBlockEntity;
 import com.hlysine.create_connected.content.sixwaygearbox.SixWayGearboxRenderer;
 import com.hlysine.create_connected.content.sixwaygearbox.SixWayGearboxVisual;
+import com.simibubi.create.content.kinetics.simpleRelays.BracketedKineticBlockEntityRenderer;
 import com.simibubi.create.content.kinetics.simpleRelays.SimpleKineticBlockEntity;
 import com.simibubi.create.content.kinetics.simpleRelays.encased.EncasedCogRenderer;
 import com.simibubi.create.content.kinetics.simpleRelays.encased.EncasedCogVisual;
@@ -21,8 +22,14 @@ import com.simibubi.create.content.kinetics.transmission.SplitShaftRenderer;
 import com.simibubi.create.content.kinetics.transmission.SplitShaftVisual;
 import com.tterrag.registrate.util.entry.BlockEntityEntry;
 import net.Rarin.create_connected_encased.CCEncased;
+import net.Rarin.create_connected_encased.blockEntities.CustomShearPinBlockEntity;
+import net.Rarin.create_connected_encased.blockEntities.WoodenShearPinBlockEntity;
+import net.Rarin.create_connected_encased.blockEntities.visuals.CustomShearPinVisual;
+import net.Rarin.create_connected_encased.blockEntities.visuals.WoodenShearPinVisual;
 import net.Rarin.create_connected_encased.casings.CCasingSet;
 import net.Rarin.create_connected_encased.casings.CCasingSets;
+import net.Rarin.create_connected_encased.transmissions.CCETransmissionSet;
+import net.Rarin.create_connected_encased.transmissions.CCETransmissionSets;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.neoforged.bus.api.SubscribeEvent;
@@ -97,6 +104,18 @@ public class CCEncasedBlockEntities {
             .renderer(() -> FluidVesselRenderer::new)
             .register();
 
+    public static final BlockEntityEntry<CustomShearPinBlockEntity> SHEAR_PIN = REGISTRATE
+            .blockEntity("shear_pin", CustomShearPinBlockEntity::new)
+            .visual(() -> CustomShearPinVisual::new, false)
+            .renderer(() -> BracketedKineticBlockEntityRenderer::new)
+            .register();
+
+    public static final BlockEntityEntry<WoodenShearPinBlockEntity> WOODEN_SHEAR_PIN = REGISTRATE
+            .blockEntity("wooden_shear_pin", WoodenShearPinBlockEntity::new)
+            .visual(() -> WoodenShearPinVisual::create, false)
+            .renderer(() -> BracketedKineticBlockEntityRenderer::new)
+            .register();
+
     public static void register() {}
 
     @SubscribeEvent
@@ -111,9 +130,15 @@ public class CCEncasedBlockEntities {
         register(event, FREEWHEEL_CLUTCH.get(), CCasingSet::getFreewheelClutch, CCasingSet::doesGenerateFreewheelClutch);
         register(event, OVERSTRESS_CLUTCH.get(), CCasingSet::getOverstressClutch, CCasingSet::doesGenerateOverstressClutch);
         register(event, FLUID_VESSEL.get(), CCasingSet::getFluidVessel, CCasingSet::doesGenerateFluidVessel);
+
+        registerTransmission(event, SHEAR_PIN.get(), CCETransmissionSet::getShearPin, CCETransmissionSet::doesGenerateShearPin, CCETransmissionSet::getShearPinBlockEntityType);
     }
 
     public static void register(BlockEntityTypeAddBlocksEvent event, BlockEntityType<?> type, Function<CCasingSet, Block> blockFunction, Predicate<CCasingSet> validateFunction){
         CCasingSets.getSets().stream().filter(set-> Objects.nonNull(blockFunction.apply(set))).filter(validateFunction).map(blockFunction).forEach(b->event.modify(type,b));
+    }
+
+    private static void registerTransmission(BlockEntityTypeAddBlocksEvent event, BlockEntityType<?> type, Function<CCETransmissionSet, Block> blockFunction, Predicate<CCETransmissionSet> validateFunction, Function<CCETransmissionSet,BlockEntityType<?>> typeFunction){
+        CCETransmissionSets.getSets().stream().filter(set-> Objects.nonNull(blockFunction.apply(set))).filter(validateFunction).forEach(b->event.modify(typeFunction.apply(b) == null ? type : typeFunction.apply(b),blockFunction.apply(b)));
     }
 }

@@ -71,8 +71,6 @@
     "create_connected_encased:weathered_iron_inverted_clutch",
     "create_connected_encased:weathered_iron_centrifugal_clutch",
     "create_connected_encased:weathered_iron_freewheel_clutch",
-    "create_connected_encased:weathered_iron_overstress_clutch",
-    "create_connected_encased:zinc_parallel_gearbox",
-    "create_connected_encased:zinc_six_way_gearbox"
+    "create_connected_encased:weathered_iron_overstress_clutch"
   ]
 }

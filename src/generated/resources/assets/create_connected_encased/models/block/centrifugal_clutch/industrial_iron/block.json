@@ -4,6 +4,6 @@
     "0": "create_connected_encased:block/centrifugal_clutch_off/industrial_iron",
     "1": "createcasing:block/gearbox/industrial_iron",
     "2": "createcasing:block/funnel_frame/industrial_iron",
-    "particle": "create_connected_encased:block/freewheel_clutch_off/industrial_iron"
+    "particle": "create_connected_encased:block/centrifugal_clutch_off/industrial_iron"
   }
 }

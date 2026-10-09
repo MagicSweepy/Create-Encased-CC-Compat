@@ -1,0 +1,14 @@
+{
+  "type": "create:cutting",
+  "ingredients": [
+    {
+      "item": "createcasing:spruce_shaft"
+    }
+  ],
+  "processingTime": 200,
+  "results": [
+    {
+    "id": "create_connected_encased:spruce_shear_pin"
+    }
+  ]
+}

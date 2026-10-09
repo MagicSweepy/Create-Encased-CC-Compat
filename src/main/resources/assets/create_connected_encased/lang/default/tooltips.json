@@ -10,6 +10,7 @@
   "block.create_connected_encased.brass_six_way_gearbox.tooltip.summary": "A gearbox with shafts on _all 6 sides_. Top and bottom spin at _half speed_.",
   "item.create_connected_encased.brass_vertical_brass_gearbox.tooltip.summary": "A gearbox where the rotation direction of all 4 sides are _independently configurable_ with a wrench.",
   "block.create_connected_encased.brass_vertical_six_way_gearbox.tooltip.summary": "A gearbox with shafts on _all 6 sides_. Top and bottom spin at _half speed_.",
+  "block.create_connected_encased.brass_shear_pin.tooltip.summary": "A single-use connector that _breaks_ when the network is _overstressed_.",
 
   "block.create_connected_encased.copper_brake.tooltip.summary": "A device that produces _immense stress_ when powered, halting the network by _overstressing_ it.",
   "block.create_connected_encased.copper_gearbox.tooltip.summary": "A gearbox where the rotation direction of all 4 sides are _independently configurable with a wrench_.",
@@ -22,6 +23,7 @@
   "block.create_connected_encased.copper_six_way_gearbox.tooltip.summary": "A gearbox with shafts on _all 6 sides_. Top and bottom spin at _half speed_.",
   "item.create_connected_encased.copper_vertical_brass_gearbox.tooltip.summary": "A gearbox where the rotation direction of all 4 sides are _independently configurable_ with a wrench.",
   "block.create_connected_encased.copper_vertical_six_way_gearbox.tooltip.summary": "A gearbox with shafts on _all 6 sides_. Top and bottom spin at _half speed_.",
+  "block.create_connected_encased.copper_shear_pin.tooltip.summary": "A single-use connector that _breaks_ when the network is _overstressed_.",
 
   "block.create_connected_encased.railway_brake.tooltip.summary": "A device that produces _immense stress_ when powered, halting the network by _overstressing_ it.",
   "block.create_connected_encased.railway_gearbox.tooltip.summary": "A gearbox where the rotation direction of all 4 sides are _independently configurable with a wrench_.",
@@ -93,5 +95,18 @@
   "block.create_connected_encased.weathered_iron_overstress_clutch.tooltip.summary": "A clutch that _uncouples_ after a set delay when the network is _overstressed_.",
   "block.create_connected_encased.weathered_iron_six_way_gearbox.tooltip.summary": "A gearbox with shafts on _all 6 sides_. Top and bottom spin at _half speed_.",
   "item.create_connected_encased.weathered_iron_vertical_brass_gearbox.tooltip.summary": "A gearbox where the rotation direction of all 4 sides are _independently configurable_ with a wrench.",
-  "block.create_connected_encased.weathered_iron_vertical_six_way_gearbox.tooltip.summary": "A gearbox with shafts on _all 6 sides_. Top and bottom spin at _half speed_."
+  "block.create_connected_encased.weathered_iron_vertical_six_way_gearbox.tooltip.summary": "A gearbox with shafts on _all 6 sides_. Top and bottom spin at _half speed_.",
+
+  "block.create_connected_encased.zinc_shear_pin.tooltip.summary": "A single-use connector that _breaks_ when the network is _overstressed_.",
+  "block.create_connected_encased.acacia_shear_pin.tooltip.summary": "A single-use connector that _breaks_ when the network is _overstressed_.",
+  "block.create_connected_encased.bamboo_shear_pin.tooltip.summary": "A single-use connector that _breaks_ when the network is _overstressed_.",
+  "block.create_connected_encased.birch_shear_pin.tooltip.summary": "A single-use connector that _breaks_ when the network is _overstressed_.",
+  "block.create_connected_encased.cherry_shear_pin.tooltip.summary": "A single-use connector that _breaks_ when the network is _overstressed_.",
+  "block.create_connected_encased.crimson_shear_pin.tooltip.summary": "A single-use connector that _breaks_ when the network is _overstressed_.",
+  "block.create_connected_encased.dark_oak_shear_pin.tooltip.summary": "A single-use connector that _breaks_ when the network is _overstressed_.",
+  "block.create_connected_encased.jungle_shear_pin.tooltip.summary": "A single-use connector that _breaks_ when the network is _overstressed_.",
+  "block.create_connected_encased.mangrove_shear_pin.tooltip.summary": "A single-use connector that _breaks_ when the network is _overstressed_.",
+  "block.create_connected_encased.oak_shear_pin.tooltip.summary": "A single-use connector that _breaks_ when the network is _overstressed_.",
+  "block.create_connected_encased.spruce_shear_pin.tooltip.summary": "A single-use connector that _breaks_ when the network is _overstressed_.",
+  "block.create_connected_encased.warped_shear_pin.tooltip.summary": "A single-use connector that _breaks_ when the network is _overstressed_."
 }

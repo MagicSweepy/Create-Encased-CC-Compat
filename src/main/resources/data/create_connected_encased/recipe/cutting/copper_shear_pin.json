@@ -1,0 +1,14 @@
+{
+  "type": "create:cutting",
+  "ingredients": [
+    {
+      "tag": "c:ingots/copper"
+    }
+  ],
+  "processingTime": 200,
+  "results": [
+    {
+      "id": "create_connected_encased:copper_shear_pin"
+    }
+  ]
+}

@@ -4,6 +4,7 @@
   "package": "net.Rarin.create_connected_encased.mixin",
   "compatibilityLevel": "JAVA_21",
   "mixins": [
+    "BlockStressValuesMixin",
     "BoilerDataMixin",
     "ChainCogWheelBlockMixin",
     "CreateCasingCommandMixin",

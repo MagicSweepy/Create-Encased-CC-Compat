@@ -1,0 +1,17 @@
+{
+  "variants": {
+    "axis=x": {
+      "model": "create_connected_encased:block/shear_pin/mangrove",
+      "x": 90,
+      "y": 90
+    },
+    "axis=y": {
+      "model": "create_connected_encased:block/shear_pin/mangrove"
+    },
+    "axis=z": {
+      "model": "create_connected_encased:block/shear_pin/mangrove",
+      "x": 90,
+      "y": 180
+    }
+  }
+}
