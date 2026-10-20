@@ -60,15 +60,18 @@ neoForge {
 sourceSets.main.resources { srcDir 'src/generated/resources' }
 
 repositories {
+    mavenLocal()
     maven { url = "https://maven.createmod.net" } // Create, Ponder, Flywheel
     maven { url = "https://maven.ithundxr.dev/snapshots" } // Registrate
     maven { url = "https://maven.blamejared.com" }
     maven { url = "https://api.modrinth.com/maven" }
     maven { url = "https://maven.fallenbreath.me/releases" } // Conditional Mixin
     maven { url = "https://maven.iglee.fr/releases" } //Iglee's Repo
-    maven { url = "https://maven.latvian.dev/releases"
-    }
+    maven { url = "https://maven.latvian.dev/releases" }
+    maven { url = "https://jitpack.io" }
 
+    maven { url = "https://www.cursemaven.com" }
+    maven { url = "https://registry.somethingcatchy.net/repository/maven-public" }
 }
 dependencies {
     implementation("com.simibubi.create:create-${minecraft_version}:${create_version}:slim") { transitive = false }
@@ -80,16 +83,12 @@ dependencies {
     implementation "maven.modrinth:jade:${project.jade_version}"
     implementation("mezz.jei:jei-$minecraft_version-neoforge:$jei_version")
 
+    api("dev.latvian.mods:kubejs-neoforge:$kubejs_version")
+    //implementation "maven.modrinth:create-Encased:${create_encased_version}"
+    implementation "fr.iglee42:CreateCasing:1.21.1-1.10.0"
     //implementation "fr.iglee42:CreateCasing:${create_encased_version}"
-    //api("dev.latvian.mods:kubejs-neoforge:2101.+")
-
-    implementation "maven.modrinth:create-Encased:${create_encased_version}"
     implementation "maven.modrinth:create-connected:${create_connected_version}"
     implementation "maven.modrinth:hezpkOYP:S6xZzbRg"
-
-    implementation "maven.modrinth:T8bvmqVZ:g9Lmjjc5"
-    implementation "maven.modrinth:RpH8tmT1:j7UkVY7e"
-    implementation "maven.modrinth:sHO3MhQx:BOTN7zzN"
 }
 
 var generateModMetadata = tasks.register("generateModMetadata", ProcessResources) {
