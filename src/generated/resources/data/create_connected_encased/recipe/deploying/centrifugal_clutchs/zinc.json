@@ -1,0 +1,16 @@
+{
+  "type": "create:deploying",
+  "ingredients": [
+    {
+      "tag": "create_connected:centrifugal_clutchs"
+    },
+    {
+      "tag": "c:plates/zinc"
+    }
+  ],
+  "results": [
+    {
+      "id": "create_connected_encased:zinc_centrifugal_clutch"
+    }
+  ]
+}

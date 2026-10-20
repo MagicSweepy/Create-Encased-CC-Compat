@@ -1,0 +1,16 @@
+{
+  "type": "create:deploying",
+  "ingredients": [
+    {
+      "tag": "create_connected:freewheel_clutchs"
+    },
+    {
+      "tag": "c:plates/chorium"
+    }
+  ],
+  "results": [
+    {
+      "id": "create_connected_encased:creative_freewheel_clutch"
+    }
+  ]
+}

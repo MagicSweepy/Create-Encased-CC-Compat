@@ -1,0 +1,14 @@
+{
+  "values": [
+    "create_connected_encased:brass_parallel_gearbox",
+    "create_connected_encased:copper_parallel_gearbox",
+    "create_connected_encased:railway_parallel_gearbox",
+    "create_connected_encased:shadow_steel_parallel_gearbox",
+    "create_connected_encased:refined_radiance_parallel_gearbox",
+    "create_connected_encased:creative_parallel_gearbox",
+    "create_connected_encased:industrial_iron_parallel_gearbox",
+    "create_connected_encased:weathered_iron_parallel_gearbox",
+    "create_connected_encased:zinc_parallel_gearbox",
+    "create_connected:parallel_gearbox"
+  ]
+}

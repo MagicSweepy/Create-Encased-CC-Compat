@@ -1,0 +1,16 @@
+{
+  "type": "create:deploying",
+  "ingredients": [
+    {
+      "tag": "create_connected:shear_pins"
+    },
+    {
+      "item": "minecraft:cherry_planks"
+    }
+  ],
+  "results": [
+    {
+      "id": "create_connected_encased:cherry_shear_pin"
+    }
+  ]
+}

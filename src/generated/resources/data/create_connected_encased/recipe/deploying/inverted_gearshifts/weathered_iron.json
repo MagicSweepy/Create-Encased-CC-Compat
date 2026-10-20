@@ -1,0 +1,16 @@
+{
+  "type": "create:deploying",
+  "ingredients": [
+    {
+      "tag": "create_connected:inverted_gearshifts"
+    },
+    {
+      "tag": "c:plates/weathered_iron"
+    }
+  ],
+  "results": [
+    {
+      "id": "create_connected_encased:weathered_iron_inverted_gearshift"
+    }
+  ]
+}

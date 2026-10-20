@@ -1,0 +1,16 @@
+{
+  "type": "create:deploying",
+  "ingredients": [
+    {
+      "tag": "create_connected:parallel_gearboxs"
+    },
+    {
+      "tag": "c:plates/industrial_iron"
+    }
+  ],
+  "results": [
+    {
+      "id": "create_connected_encased:industrial_iron_parallel_gearbox"
+    }
+  ]
+}

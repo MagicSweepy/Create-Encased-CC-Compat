@@ -1,0 +1,16 @@
+{
+  "type": "create:deploying",
+  "ingredients": [
+    {
+      "tag": "create_connected:fluid_vessels"
+    },
+    {
+      "tag": "c:plates/zinc"
+    }
+  ],
+  "results": [
+    {
+      "id": "create_connected_encased:zinc_fluid_vessel"
+    }
+  ]
+}

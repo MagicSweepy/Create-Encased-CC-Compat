@@ -1,0 +1,16 @@
+{
+  "type": "create:deploying",
+  "ingredients": [
+    {
+      "tag": "create_connected:shear_pins"
+    },
+    {
+      "tag": "c:plates/brass"
+    }
+  ],
+  "results": [
+    {
+      "id": "create_connected_encased:brass_shear_pin"
+    }
+  ]
+}

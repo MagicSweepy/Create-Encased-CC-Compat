@@ -1,0 +1,16 @@
+{
+  "type": "create:deploying",
+  "ingredients": [
+    {
+      "tag": "create_connected:fluid_vessels"
+    },
+    {
+      "tag": "c:plates/brass"
+    }
+  ],
+  "results": [
+    {
+      "id": "create_connected_encased:brass_fluid_vessel"
+    }
+  ]
+}

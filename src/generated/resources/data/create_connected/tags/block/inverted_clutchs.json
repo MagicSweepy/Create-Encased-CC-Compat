@@ -1,0 +1,14 @@
+{
+  "values": [
+    "create_connected_encased:brass_inverted_clutch",
+    "create_connected_encased:copper_inverted_clutch",
+    "create_connected_encased:railway_inverted_clutch",
+    "create_connected_encased:shadow_steel_inverted_clutch",
+    "create_connected_encased:refined_radiance_inverted_clutch",
+    "create_connected_encased:creative_inverted_clutch",
+    "create_connected_encased:industrial_iron_inverted_clutch",
+    "create_connected_encased:weathered_iron_inverted_clutch",
+    "create_connected_encased:zinc_inverted_clutch",
+    "create_connected:inverted_clutch"
+  ]
+}

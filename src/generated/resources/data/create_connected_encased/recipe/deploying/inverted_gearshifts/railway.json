@@ -1,0 +1,16 @@
+{
+  "type": "create:deploying",
+  "ingredients": [
+    {
+      "tag": "create_connected:inverted_gearshifts"
+    },
+    {
+      "tag": "c:plates/obsidian"
+    }
+  ],
+  "results": [
+    {
+      "id": "create_connected_encased:railway_inverted_gearshift"
+    }
+  ]
+}

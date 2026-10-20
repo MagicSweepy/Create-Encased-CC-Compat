@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "tag": "create_connected:chain_cogwheels"
+    },
+    {
+      "tag": "c:plates/andesite_alloy"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "create_connected:encased_chain_cogwheel"
+  }
+}

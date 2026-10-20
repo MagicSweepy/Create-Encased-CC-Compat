@@ -1,0 +1,16 @@
+{
+  "type": "create:deploying",
+  "ingredients": [
+    {
+      "tag": "create_connected:freewheel_clutchs"
+    },
+    {
+      "tag": "c:plates/brass"
+    }
+  ],
+  "results": [
+    {
+      "id": "create_connected_encased:brass_freewheel_clutch"
+    }
+  ]
+}

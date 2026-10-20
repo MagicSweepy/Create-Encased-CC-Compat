@@ -1,0 +1,16 @@
+{
+  "type": "create:deploying",
+  "ingredients": [
+    {
+      "tag": "create_connected:shear_pins"
+    },
+    {
+      "item": "minecraft:spruce_planks"
+    }
+  ],
+  "results": [
+    {
+      "id": "create_connected_encased:spruce_shear_pin"
+    }
+  ]
+}

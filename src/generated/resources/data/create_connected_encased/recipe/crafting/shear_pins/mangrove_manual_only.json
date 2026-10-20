@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "tag": "create_connected:shear_pins"
+    },
+    {
+      "item": "minecraft:mangrove_planks"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "create_connected_encased:mangrove_shear_pin"
+  }
+}

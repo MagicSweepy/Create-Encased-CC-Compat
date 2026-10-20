@@ -1,0 +1,16 @@
+{
+  "type": "create:deploying",
+  "ingredients": [
+    {
+      "tag": "create_connected:fluid_vessels"
+    },
+    {
+      "tag": "c:plates/andesite_alloy"
+    }
+  ],
+  "results": [
+    {
+      "id": "create_connected_encased:andesite_fluid_vessel"
+    }
+  ]
+}

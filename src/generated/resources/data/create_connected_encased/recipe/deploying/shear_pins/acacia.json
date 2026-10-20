@@ -1,0 +1,16 @@
+{
+  "type": "create:deploying",
+  "ingredients": [
+    {
+      "tag": "create_connected:shear_pins"
+    },
+    {
+      "item": "minecraft:acacia_planks"
+    }
+  ],
+  "results": [
+    {
+      "id": "create_connected_encased:acacia_shear_pin"
+    }
+  ]
+}

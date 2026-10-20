@@ -2,7 +2,7 @@
   "type": "create:cutting",
   "ingredients": [
     {
-      "tag": "c:ingots/copper"
+      "item": "createcasing:copper_shaft"
     }
   ],
   "processingTime": 200,

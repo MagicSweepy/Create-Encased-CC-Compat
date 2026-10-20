@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "tag": "create_connected:chain_cogwheels"
+    },
+    {
+      "tag": "c:plates/industrial_iron"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "create_connected_encased:industrial_iron_encased_chain_cogwheel"
+  }
+}

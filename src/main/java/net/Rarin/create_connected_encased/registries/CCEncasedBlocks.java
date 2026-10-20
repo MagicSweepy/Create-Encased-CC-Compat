@@ -2,6 +2,7 @@ package net.Rarin.create_connected_encased.registries;
 
 import com.hlysine.create_connected.config.FeatureCategory;
 import com.hlysine.create_connected.config.FeatureToggle;
+import com.hlysine.create_connected.content.fluidvessel.FluidVesselBlockEntity;
 import com.hlysine.create_connected.content.fluidvessel.FluidVesselItem;
 import com.hlysine.create_connected.content.parallelgearbox.ParallelGearboxBlock;
 import com.hlysine.create_connected.content.shearpin.ShearPinBlock;
@@ -18,15 +19,18 @@ import com.simibubi.create.foundation.data.AssetLookup;
 import com.simibubi.create.foundation.data.CreateRegistrate;
 import com.simibubi.create.foundation.data.SharedProperties;
 import com.tterrag.registrate.builders.BlockBuilder;
+import com.tterrag.registrate.util.entry.BlockEntityEntry;
 import com.tterrag.registrate.util.entry.BlockEntry;
+import net.Rarin.create_connected_encased.CCEncased;
 import net.Rarin.create_connected_encased.blocks.*;
-import net.Rarin.create_connected_encased.casings.CCasingSets;
+import net.Rarin.create_connected_encased.sets.casings.CCasingSets;
 import net.Rarin.create_connected_encased.client.ClientModelWrappers;
 import net.Rarin.create_connected_encased.config.CCEStress;
-import net.Rarin.create_connected_encased.transmissions.CCETransmissionSets;
+import net.Rarin.create_connected_encased.sets.transmissions.CCETransmissionSets;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.material.MapColor;
@@ -59,7 +63,9 @@ public class CCEncasedBlocks {
                 .transform(CCEStress.setNoImpact())
                 .transform(axeOrPickaxe())
                 .blockstate(CCEncasedBlockStateGens.encasedChainWheel(name))
+                .tag(CCEncasedTags.EBlockTags.CHAIN_COGWHEELS.tag)
                 .item()
+                .tag(CCEncasedTags.EItemTags.CHAIN_COGWHEELS.tag)
                 .model((c, p) -> p.getBuilder(c.getName()).parent(Objects.requireNonNull(createChainWheelModel(p, name, true, "item"))))
                 .build()
                 .register();
@@ -73,7 +79,9 @@ public class CCEncasedBlocks {
                 .transform(CCEStress.setNoImpact())
                 .transform(axeOrPickaxe())
                 .blockstate((c, p) -> CCEncasedBlockStateGens.axisBlock(c, p, brakeModel(p, name), false))
+                .tag(CCEncasedTags.EBlockTags.BRAKES.tag)
                 .item()
+                .tag(CCEncasedTags.EItemTags.BRAKES.tag)
                 .model((c, p) -> p.getBuilder(c.getName()).parent(brakeItemModel(p, name)))
                 .build()
                 .register();
@@ -85,10 +93,12 @@ public class CCEncasedBlocks {
                 .properties(p -> p.noOcclusion().mapColor(MapColor.PODZOL))
                 .transform(CCEStress.setNoImpact())
                 .transform(axeOrPickaxe())
-                .blockstate(parallelgearbox(name));
+                .blockstate(parallelgearbox(name))
+                .tag(CCEncasedTags.EBlockTags.PARALLEL_GEARBOXS.tag);
         entry = connectedTexture(entry, sprite, (block, cc) -> cc.make(block, sprite,
                 (s, f) -> f.getAxis() == s.getValue(ParallelGearboxBlock.AXIS)));
         return entry.item()
+                .tag(CCEncasedTags.EItemTags.PARALLEL_GEARBOXS.tag)
                 .model((ctx, prov) -> prov.getBuilder(ctx.getName()).parent(Objects.requireNonNull(parallelGearboxModel(prov, name, "item"))))
                 .build()
                 .register();
@@ -102,8 +112,10 @@ public class CCEncasedBlocks {
                 .transform(CCEStress.setNoImpact())
                 .transform(axeOrPickaxe())
                 //.lang(name + " 6-way Gearbox")
-                .blockstate(sixWaygearbox(name));
+                .blockstate(sixWaygearbox(name))
+                .tag(CCEncasedTags.EBlockTags.SIX_WAY_GEARBOXS.tag);
         return entry.item()
+                .tag(CCEncasedTags.EItemTags.SIX_WAY_GEARBOXS.tag)
                 .model((ctx, prov) -> prov.getBuilder(ctx.getName()).parent(Objects.requireNonNull(sixWayGearboxModel(prov, name, "item"))))
                 .build()
                 .register();
@@ -117,7 +129,9 @@ public class CCEncasedBlocks {
                 .transform(CCEStress.setNoImpact())
                 .transform(axeOrPickaxe())
                 .blockstate((c, p) -> CCEncasedBlockStateGens.axisBlock(c, p, invertedGearshiftModel(p, name), false))
+                .tag(CCEncasedTags.EBlockTags.INVERTED_GEARSHIFTS.tag)
                 .item()
+                .tag(CCEncasedTags.EItemTags.INVERTED_GEARSHIFTS.tag)
                 .model((c, p) -> p.getBuilder(c.getName()).parent(invertedGearshiftItemModel(p, name)))
                 .build()
                 .register();
@@ -131,7 +145,9 @@ public class CCEncasedBlocks {
                 .transform(CCEStress.setNoImpact())
                 .transform(axeOrPickaxe())
                 .blockstate((c, p) -> CCEncasedBlockStateGens.axisBlock(c, p, invertedClutchModel(p, name), false))
+                .tag(CCEncasedTags.EBlockTags.INVERTED_CLUTCHS.tag)
                 .item()
+                .tag(CCEncasedTags.EItemTags.INVERTED_CLUTCHS.tag)
                 .model((c, p) -> p.getBuilder(c.getName()).parent(invertedClutchItemModel(p, name)))
                 .build()
                 .register();
@@ -145,7 +161,9 @@ public class CCEncasedBlocks {
                 .transform(CCEStress.setNoImpact())
                 .transform(axeOrPickaxe())
                 .blockstate((c, p) -> p.directionalBlock(c.get(), centrifugalClutchModel(p, name)))
+                .tag(CCEncasedTags.EBlockTags.CENTRIFUGAL_CLUTCHS.tag)
                 .item()
+                .tag(CCEncasedTags.EItemTags.CENTRIFUGAL_CLUTCHS.tag)
                 .model((c, p) -> p.getBuilder(c.getName()).parent(centrifugalClutchItemModel(p, name)))
                 .build()
                 .register();
@@ -160,7 +178,9 @@ public class CCEncasedBlocks {
                 .transform(CCEStress.setNoImpact())
                 .transform(axeOrPickaxe())
                 .blockstate((c, p) -> p.directionalBlock(c.get(), freewheelClutchModel(p, name)))
+                .tag(CCEncasedTags.EBlockTags.FREEWHEEL_CLUTCHS.tag)
                 .item()
+                .tag(CCEncasedTags.EItemTags.FREEWHEEL_CLUTCHS.tag)
                 .model((c, p) -> p.getBuilder(c.getName()).parent(freewheelClutchItemModel(p, name)))
                 .build()
                 .register();
@@ -174,14 +194,16 @@ public class CCEncasedBlocks {
                 .transform(CCEStress.setNoImpact())
                 .transform(axeOrPickaxe())
                 .blockstate((c, p) -> CCEncasedBlockStateGens.axisBlock(c, p, overstressClutchModel(p, name), false))
+                .tag(CCEncasedTags.EBlockTags.OVERSTRESS_CLUTCHS.tag)
                 .item()
+                .tag(CCEncasedTags.EItemTags.OVERSTRESS_CLUTCHS.tag)
                 .model((c, p) -> p.getBuilder(c.getName()).parent(overstressClutchItemModel(p, name)))
                 .build()
                 .register();
     }
 
-    public static BlockEntry<CustomFluidVessel> createFluidVessel(String name, CTSpriteShiftEntry sideSprite, CTSpriteShiftEntry topSprite, CTSpriteShiftEntry innerSprite) {
-        return REGISTRATE.block(name + "_fluid_vessel", CustomFluidVessel::new)
+    public static BlockEntry<CustomFluidVesselBlock> createFluidVessel(String name,CTSpriteShiftEntry sideSprite, CTSpriteShiftEntry topSprite, CTSpriteShiftEntry innerSprite, Supplier<BlockEntityType<? extends FluidVesselBlockEntity>> beType) {
+        return REGISTRATE.block(name + "_fluid_vessel", p -> new CustomFluidVesselBlock(p, beType))
                 .initialProperties(SharedProperties::copperMetal)
                 .properties(p -> p.noOcclusion()
                         .isRedstoneConductor((p1, p2, p3) -> true))
@@ -189,7 +211,7 @@ public class CCEncasedBlocks {
                 .blockstate(new CustomFluidVesselGenerator(name)::generate)
                 .onRegister(CreateRegistrate.blockModel(() -> ClientModelWrappers.encasedFluidVessel(sideSprite, topSprite, innerSprite)))
                 .onRegister(b -> BlockMovementChecks.registerAttachedCheck((state, world, pos, direction) -> {
-                    if (state.getBlock() instanceof CustomFluidVessel)
+                    if (state.getBlock() instanceof CustomFluidVesselBlock)
                         return BlockMovementChecks.CheckResult.of(ConnectivityHandler.isConnected(world, pos, pos.relative(direction)));
                     return BlockMovementChecks.CheckResult.PASS;
                 }))
@@ -197,7 +219,9 @@ public class CCEncasedBlocks {
                 .transform(mountedFluidStorage(CCMountedStorageTypes.FLUID_VESSEL))
                 .onRegister(movementBehaviour(new FluidTankMovementBehavior()))
                 .addLayer(() -> RenderType::cutoutMipped)
+                .tag(CCEncasedTags.EBlockTags.FLUID_VESSELS.tag)
                 .item(FluidVesselItem::new)
+                .tag(CCEncasedTags.EItemTags.FLUID_VESSELS.tag)
                 .model(AssetLookup.customBlockItemModel("fluid_vessel", name, "block_x_single_window"))
                 .build()
                 .register();
@@ -209,10 +233,12 @@ public class CCEncasedBlocks {
                 .properties(p -> p.mapColor(MapColor.METAL).forceSolidOn())
                 .transform(CCEStress.setNoImpact())
                 .transform(FeatureToggle.register(FeatureCategory.KINETIC))
-                .transform(pickaxeOnly())
+                .transform(axeOrPickaxe())
                 .blockstate(CCEncasedBlockStateGens.shearPin(name))
                 .onRegister(CreateRegistrate.blockModel(() -> BracketedKineticBlockModel::new))
+                .tag(CCEncasedTags.EBlockTags.SHEAR_PINS.tag)
                 .item()
+                .tag(CCEncasedTags.EItemTags.SHEAR_PINS.tag)
                 .model((c, p) -> p.getBuilder(c.getName()).parent(Objects.requireNonNull(shearPinModel(p, name))))
                 .build()
                 .register();
@@ -228,6 +254,8 @@ public class CCEncasedBlocks {
 
 
     public static void register() {
+
+        CCEncased.KJS_HANDLER.dispatchRegisterEvent();
 
         CCasingSets.getSets().forEach(set -> {
 
@@ -258,9 +286,15 @@ public class CCEncasedBlocks {
             if (set.doesGenerateOverstressClutch())
                 set.setOverstressClutch(createOverstressClutch(set.getName()));
 
-            if (set.doesGenerateFluidVessel())
-                set.setFluidVessel(createFluidVessel(set.getName(), set.getTankSideSprite(), set.getTankTopSprite(), set.getTankInnerSprite()));
-
+            if (set.doesGenerateFluidVessel()) {
+                BlockEntityEntry<?>[] holder = new BlockEntityEntry<?>[1];
+                BlockEntry<CustomFluidVesselBlock> tank = createFluidVessel(set.getName(), set.getTankSideSprite(), set.getTankTopSprite(), set.getTankInnerSprite(),
+                        () -> (BlockEntityType<? extends FluidVesselBlockEntity>) holder[0].get());
+                BlockEntityEntry<FluidVesselBlockEntity> be = CCEncasedBlockEntities.FLUID_VESSEL(set.getName(), tank);
+                holder[0] = be;
+                set.setFluidVessel(tank);
+                set.setFluidVesselBlockEntity(be);
+            }
         });
 
         CCETransmissionSets.getSets().forEach(set -> {

@@ -1,0 +1,20 @@
+{
+  "values": [
+    "create_connected_encased:brass_shear_pin",
+    "create_connected_encased:copper_shear_pin",
+    "create_connected_encased:zinc_shear_pin",
+    "create_connected_encased:mldeg_shear_pin",
+    "create_connected_encased:acacia_shear_pin",
+    "create_connected_encased:birch_shear_pin",
+    "create_connected_encased:bamboo_shear_pin",
+    "create_connected_encased:cherry_shear_pin",
+    "create_connected_encased:crimson_shear_pin",
+    "create_connected_encased:dark_oak_shear_pin",
+    "create_connected_encased:oak_shear_pin",
+    "create_connected_encased:jungle_shear_pin",
+    "create_connected_encased:mangrove_shear_pin",
+    "create_connected_encased:warped_shear_pin",
+    "create_connected_encased:spruce_shear_pin",
+    "create_connected:shear_pin"
+  ]
+}

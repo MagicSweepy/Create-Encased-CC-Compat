@@ -1,0 +1,16 @@
+{
+  "type": "create:deploying",
+  "ingredients": [
+    {
+      "tag": "create_connected:parallel_gearboxs"
+    },
+    {
+      "tag": "c:plates/zinc"
+    }
+  ],
+  "results": [
+    {
+      "id": "create_connected_encased:zinc_parallel_gearbox"
+    }
+  ]
+}

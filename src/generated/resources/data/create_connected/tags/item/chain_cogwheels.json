@@ -1,0 +1,14 @@
+{
+  "values": [
+    "create_connected_encased:brass_encased_chain_cogwheel",
+    "create_connected_encased:copper_encased_chain_cogwheel",
+    "create_connected_encased:railway_encased_chain_cogwheel",
+    "create_connected_encased:shadow_steel_encased_chain_cogwheel",
+    "create_connected_encased:refined_radiance_encased_chain_cogwheel",
+    "create_connected_encased:creative_encased_chain_cogwheel",
+    "create_connected_encased:industrial_iron_encased_chain_cogwheel",
+    "create_connected_encased:weathered_iron_encased_chain_cogwheel",
+    "create_connected_encased:zinc_encased_chain_cogwheel",
+    "create_connected:encased_chain_cogwheel"
+  ]
+}

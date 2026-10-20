@@ -6,8 +6,11 @@ import com.simibubi.create.foundation.item.ItemDescription;
 import com.simibubi.create.foundation.item.KineticStats;
 import com.simibubi.create.foundation.item.TooltipModifier;
 import fr.iglee42.createcasing.mixins.create.fluids.FluidTankBlockEntityAccessor;
+import net.Rarin.create_connected_encased.compat.kubejs.KJSExternalHandler;
 import net.Rarin.create_connected_encased.config.CCEConfigs;
 import net.Rarin.create_connected_encased.registries.*;
+import net.Rarin.create_connected_encased.sets.casings.CCasingSet;
+import net.Rarin.create_connected_encased.sets.casings.CCasingSets;
 import net.createmod.catnip.lang.FontHelper;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
@@ -35,6 +38,7 @@ public class CCEncased {
             .setTooltipModifierFactory(item -> new ItemDescription.Modifier(item, FontHelper.Palette.STANDARD_CREATE)
                     .andThen(TooltipModifier.mapNull(KineticStats.create(item))));
     public static List<ItemLike> hidedItems = new ArrayList<>();
+    public static KJSExternalHandler KJS_HANDLER = () -> {};
 
     public CCEncased(IEventBus eventBus, ModContainer modContainer) {
         modEventBus = eventBus;
@@ -53,15 +57,15 @@ public class CCEncased {
     }
 
     private void registerCapabilities(RegisterCapabilitiesEvent event) {
-        event.registerBlockEntity(
-                Capabilities.FluidHandler.BLOCK,
-                CCEncasedBlockEntities.FLUID_VESSEL.get(),
-                (be, context) -> {
-                    FluidTankBlockEntityAccessor accessor = (FluidTankBlockEntityAccessor) be;
-                    if (accessor.encased$getFluidCapability() == null)
-                        accessor.encased$refreshCapability();
-                    return accessor.encased$getFluidCapability();
-                }
+        CCasingSets.getSets().stream().filter(CCasingSet::doesGenerateFluidVessel).filter(s -> s.getFluidTankBlockEntityType() != null).forEach(set ->
+                event.registerBlockEntity(Capabilities.FluidHandler.BLOCK, set.getFluidTankBlockEntityType(),
+                        (be, context) -> {
+                            FluidTankBlockEntityAccessor accessor = (FluidTankBlockEntityAccessor) be;
+                            if (accessor.encased$getFluidCapability() == null)
+                                accessor.encased$refreshCapability();
+                            return accessor.encased$getFluidCapability();
+                        }
+                )
         );
     }
 

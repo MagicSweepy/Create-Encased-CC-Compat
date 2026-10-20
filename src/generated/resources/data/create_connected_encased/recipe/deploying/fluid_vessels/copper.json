@@ -1,0 +1,16 @@
+{
+  "type": "create:deploying",
+  "ingredients": [
+    {
+      "tag": "create_connected:fluid_vessels"
+    },
+    {
+      "tag": "c:plates/copper"
+    }
+  ],
+  "results": [
+    {
+      "id": "create_connected:fluid_vessel"
+    }
+  ]
+}

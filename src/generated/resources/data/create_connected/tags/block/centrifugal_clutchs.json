@@ -1,0 +1,14 @@
+{
+  "values": [
+    "create_connected_encased:brass_centrifugal_clutch",
+    "create_connected_encased:copper_centrifugal_clutch",
+    "create_connected_encased:railway_centrifugal_clutch",
+    "create_connected_encased:shadow_steel_centrifugal_clutch",
+    "create_connected_encased:refined_radiance_centrifugal_clutch",
+    "create_connected_encased:creative_centrifugal_clutch",
+    "create_connected_encased:industrial_iron_centrifugal_clutch",
+    "create_connected_encased:weathered_iron_centrifugal_clutch",
+    "create_connected_encased:zinc_centrifugal_clutch",
+    "create_connected:centrifugal_clutch"
+  ]
+}

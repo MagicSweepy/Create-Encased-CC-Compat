@@ -3,7 +3,7 @@ package net.Rarin.create_connected_encased.blockEntities;
 import com.hlysine.create_connected.content.shearpin.ShearPinBlockEntity;
 import com.simibubi.create.content.kinetics.base.IRotate;
 import fr.iglee42.createcasing.registries.EncasedSounds;
-import net.Rarin.create_connected_encased.transmissions.CCETransmissionSets;
+import net.Rarin.create_connected_encased.sets.transmissions.CCETransmissionSets;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;

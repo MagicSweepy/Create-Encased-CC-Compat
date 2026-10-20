@@ -1,0 +1,16 @@
+{
+  "type": "create:deploying",
+  "ingredients": [
+    {
+      "tag": "create_connected:six_way_gearboxs"
+    },
+    {
+      "tag": "c:plates/brass"
+    }
+  ],
+  "results": [
+    {
+      "id": "create_connected_encased:brass_six_way_gearbox"
+    }
+  ]
+}

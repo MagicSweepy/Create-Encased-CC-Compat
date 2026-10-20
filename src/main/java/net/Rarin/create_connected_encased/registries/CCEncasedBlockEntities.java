@@ -2,6 +2,7 @@ package net.Rarin.create_connected_encased.registries;
 
 import com.hlysine.create_connected.content.brake.BrakeBlockEntity;
 import com.hlysine.create_connected.content.centrifugalclutch.CentrifugalClutchBlockEntity;
+import com.hlysine.create_connected.content.fluidvessel.FluidVesselBlock;
 import com.hlysine.create_connected.content.fluidvessel.FluidVesselBlockEntity;
 import com.hlysine.create_connected.content.fluidvessel.FluidVesselRenderer;
 import com.hlysine.create_connected.content.freewheelclutch.FreewheelClutchBlockEntity;
@@ -21,15 +22,16 @@ import com.simibubi.create.content.kinetics.simpleRelays.encased.EncasedCogVisua
 import com.simibubi.create.content.kinetics.transmission.SplitShaftRenderer;
 import com.simibubi.create.content.kinetics.transmission.SplitShaftVisual;
 import com.tterrag.registrate.util.entry.BlockEntityEntry;
+import com.tterrag.registrate.util.entry.BlockEntry;
 import net.Rarin.create_connected_encased.CCEncased;
 import net.Rarin.create_connected_encased.blockEntities.CustomShearPinBlockEntity;
 import net.Rarin.create_connected_encased.blockEntities.WoodenShearPinBlockEntity;
 import net.Rarin.create_connected_encased.blockEntities.visuals.CustomShearPinVisual;
 import net.Rarin.create_connected_encased.blockEntities.visuals.WoodenShearPinVisual;
-import net.Rarin.create_connected_encased.casings.CCasingSet;
-import net.Rarin.create_connected_encased.casings.CCasingSets;
-import net.Rarin.create_connected_encased.transmissions.CCETransmissionSet;
-import net.Rarin.create_connected_encased.transmissions.CCETransmissionSets;
+import net.Rarin.create_connected_encased.sets.casings.CCasingSet;
+import net.Rarin.create_connected_encased.sets.casings.CCasingSets;
+import net.Rarin.create_connected_encased.sets.transmissions.CCETransmissionSet;
+import net.Rarin.create_connected_encased.sets.transmissions.CCETransmissionSets;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.neoforged.bus.api.SubscribeEvent;
@@ -99,10 +101,13 @@ public class CCEncasedBlockEntities {
             .renderer(() -> SplitShaftRenderer::new)
             .register();
 
-    public static final BlockEntityEntry<FluidVesselBlockEntity> FLUID_VESSEL = REGISTRATE
-            .blockEntity("fluid_vessel", FluidVesselBlockEntity::new)
-            .renderer(() -> FluidVesselRenderer::new)
-            .register();
+    public static BlockEntityEntry<FluidVesselBlockEntity> FLUID_VESSEL(String name, BlockEntry<? extends FluidVesselBlock> block) {
+        return REGISTRATE
+                .blockEntity(name + "_fluid_vessel", FluidVesselBlockEntity::new)
+                .validBlock(block)
+                .renderer(() -> FluidVesselRenderer::new)
+                .register();
+    }
 
     public static final BlockEntityEntry<CustomShearPinBlockEntity> SHEAR_PIN = REGISTRATE
             .blockEntity("shear_pin", CustomShearPinBlockEntity::new)
@@ -129,7 +134,6 @@ public class CCEncasedBlockEntities {
         register(event, CENTRIFUGAL_CLUTCH.get(), CCasingSet::getCentrifugalClutch, CCasingSet::doesGenerateCentrifugalClutch);
         register(event, FREEWHEEL_CLUTCH.get(), CCasingSet::getFreewheelClutch, CCasingSet::doesGenerateFreewheelClutch);
         register(event, OVERSTRESS_CLUTCH.get(), CCasingSet::getOverstressClutch, CCasingSet::doesGenerateOverstressClutch);
-        register(event, FLUID_VESSEL.get(), CCasingSet::getFluidVessel, CCasingSet::doesGenerateFluidVessel);
 
         registerTransmission(event, SHEAR_PIN.get(), CCETransmissionSet::getShearPin, CCETransmissionSet::doesGenerateShearPin, CCETransmissionSet::getShearPinBlockEntityType);
     }

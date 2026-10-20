@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "tag": "create_connected:centrifugal_clutchs"
+    },
+    {
+      "tag": "c:plates/zinc"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "create_connected_encased:zinc_centrifugal_clutch"
+  }
+}

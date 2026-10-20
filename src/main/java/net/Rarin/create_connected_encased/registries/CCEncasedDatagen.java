@@ -5,6 +5,8 @@ import com.google.gson.JsonObject;
 import com.simibubi.create.foundation.utility.FilesHelper;
 import com.tterrag.registrate.providers.ProviderType;
 import net.Rarin.create_connected_encased.CCEncased;
+import net.Rarin.create_connected_encased.registries.data.CCEncasedRecipeGens;
+import net.Rarin.create_connected_encased.registries.data.CCEncasedRegistrateTags;
 import net.neoforged.neoforge.data.event.GatherDataEvent;
 
 import java.util.Map;
@@ -19,10 +21,13 @@ public class CCEncasedDatagen {
 	public static void gatherData(GatherDataEvent event) {
 		if (!event.getMods().contains(CCEncased.ID))
 			return;
+
 		event.getGenerator().addProvider(event.includeServer(),new CCEncasedRecipeGens(event.getGenerator().getPackOutput(),event.getLookupProvider()));
 	}
 
 	private static void addExtraRegistrateData() {
+
+		CCEncasedRegistrateTags.addGenerators();
 
 		CCEncased.registrate().addDataGenerator(ProviderType.LANG, provider -> {
 			BiConsumer<String, String> langConsumer = provider::add;

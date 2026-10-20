@@ -1,0 +1,16 @@
+{
+  "type": "create:deploying",
+  "ingredients": [
+    {
+      "tag": "create_connected:inverted_gearshifts"
+    },
+    {
+      "tag": "c:plates/copper"
+    }
+  ],
+  "results": [
+    {
+      "id": "create_connected_encased:copper_inverted_gearshift"
+    }
+  ]
+}

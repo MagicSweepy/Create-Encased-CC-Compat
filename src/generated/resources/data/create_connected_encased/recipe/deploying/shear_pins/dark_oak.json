@@ -1,0 +1,16 @@
+{
+  "type": "create:deploying",
+  "ingredients": [
+    {
+      "tag": "create_connected:shear_pins"
+    },
+    {
+      "item": "minecraft:dark_oak_planks"
+    }
+  ],
+  "results": [
+    {
+      "id": "create_connected_encased:dark_oak_shear_pin"
+    }
+  ]
+}

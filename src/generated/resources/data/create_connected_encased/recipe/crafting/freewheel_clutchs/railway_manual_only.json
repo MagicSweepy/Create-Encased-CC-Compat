@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "tag": "create_connected:freewheel_clutchs"
+    },
+    {
+      "tag": "c:plates/obsidian"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "create_connected_encased:railway_freewheel_clutch"
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "tag": "create_connected:inverted_clutchs"
+    },
+    {
+      "tag": "c:plates/industrial_iron"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "create_connected_encased:industrial_iron_inverted_clutch"
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "values": [
+    "create_connected_encased:brass_freewheel_clutch",
+    "create_connected_encased:copper_freewheel_clutch",
+    "create_connected_encased:railway_freewheel_clutch",
+    "create_connected_encased:shadow_steel_freewheel_clutch",
+    "create_connected_encased:refined_radiance_freewheel_clutch",
+    "create_connected_encased:creative_freewheel_clutch",
+    "create_connected_encased:industrial_iron_freewheel_clutch",
+    "create_connected_encased:weathered_iron_freewheel_clutch",
+    "create_connected_encased:zinc_freewheel_clutch",
+    "create_connected:freewheel_clutch"
+  ]
+}

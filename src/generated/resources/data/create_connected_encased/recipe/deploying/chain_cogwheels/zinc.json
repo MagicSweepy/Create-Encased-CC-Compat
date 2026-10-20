@@ -1,0 +1,16 @@
+{
+  "type": "create:deploying",
+  "ingredients": [
+    {
+      "tag": "create_connected:chain_cogwheels"
+    },
+    {
+      "tag": "c:plates/zinc"
+    }
+  ],
+  "results": [
+    {
+      "id": "create_connected_encased:zinc_encased_chain_cogwheel"
+    }
+  ]
+}

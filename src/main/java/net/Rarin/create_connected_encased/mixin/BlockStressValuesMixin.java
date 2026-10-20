@@ -3,7 +3,7 @@ package net.Rarin.create_connected_encased.mixin;
 import com.simibubi.create.api.stress.BlockStressValues;
 import net.Rarin.create_connected_encased.CCEncased;
 import net.Rarin.create_connected_encased.config.CCEConfigs;
-import net.Rarin.create_connected_encased.utils.CCEStressKeysModifier;
+import net.Rarin.create_connected_encased.utils.CCEncasedStressKeysModifier;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.level.block.Block;
 import org.spongepowered.asm.mixin.Mixin;
@@ -33,7 +33,7 @@ public class BlockStressValuesMixin {
         if (CCEConfigs.common().encasedBlocksUsesOwnKeys.get())
             return;
 
-        Block key = CCEStressKeysModifier.getStressKey(block);
+        Block key = CCEncasedStressKeysModifier.getStressKey(block);
 
         if (key != block)
             cir.setReturnValue(getImpact(key));
@@ -47,7 +47,7 @@ public class BlockStressValuesMixin {
         if (CCEConfigs.common().encasedBlocksUsesOwnKeys.get())
             return;
 
-        Block key = CCEStressKeysModifier.getStressKey(block);
+        Block key = CCEncasedStressKeysModifier.getStressKey(block);
 
         if (key != block)
             cir.setReturnValue(getCapacity(key));

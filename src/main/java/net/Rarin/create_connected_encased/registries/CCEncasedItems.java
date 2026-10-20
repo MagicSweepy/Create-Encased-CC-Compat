@@ -2,7 +2,7 @@ package net.Rarin.create_connected_encased.registries;
 
 import com.tterrag.registrate.util.entry.ItemEntry;
 import com.tterrag.registrate.util.nullness.NonNullFunction;
-import net.Rarin.create_connected_encased.casings.CCasingSets;
+import net.Rarin.create_connected_encased.sets.casings.CCasingSets;
 import net.Rarin.create_connected_encased.items.CustomVerticalParallelGearboxItem;
 import net.Rarin.create_connected_encased.items.CustomVerticalSixWayGearboxItem;
 import net.minecraft.world.item.Item;

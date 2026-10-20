@@ -14,8 +14,8 @@ public class WoodenShearPinBlockEntity extends CustomShearPinBlockEntity {
     @Override
     public void tick() {
         super.tick();
-        if (CCEConfigs.common().shouldWoodenShaftBreak.get()) {
-            if ((getSpeed() > CCEConfigs.common().maxSpeedWoodenShaft.get() || getSpeed() < -CCEConfigs.common().maxSpeedWoodenShaft.get())) {
+        if (CCEConfigs.common().shouldWoodenShearPinBreak.get()) {
+            if ((getSpeed() > CCEConfigs.common().maxSpeedWoodenShearPin.get() || getSpeed() < -CCEConfigs.common().maxSpeedWoodenShearPin.get())) {
                 if (source != null) {
                     if (!(CCEncasedBlocks.isWoodenShaftHasState(getLevel().getBlockState(source))))
                         getLevel().destroyBlock(worldPosition, false);

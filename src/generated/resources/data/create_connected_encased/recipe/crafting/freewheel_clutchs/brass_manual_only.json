@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "tag": "create_connected:freewheel_clutchs"
+    },
+    {
+      "tag": "c:plates/brass"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "create_connected_encased:brass_freewheel_clutch"
+  }
+}
