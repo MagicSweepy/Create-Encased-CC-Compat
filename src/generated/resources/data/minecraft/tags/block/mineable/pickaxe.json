@@ -1,6 +1,5 @@
 {
   "values": [
-    "create_connected_encased:andesite_fluid_vessel",
     "create_connected_encased:brass_encased_chain_cogwheel",
     "create_connected_encased:brass_brake",
     "create_connected_encased:brass_parallel_gearbox",
@@ -10,7 +9,6 @@
     "create_connected_encased:brass_centrifugal_clutch",
     "create_connected_encased:brass_freewheel_clutch",
     "create_connected_encased:brass_overstress_clutch",
-    "create_connected_encased:brass_fluid_vessel",
     "create_connected_encased:copper_encased_chain_cogwheel",
     "create_connected_encased:copper_brake",
     "create_connected_encased:copper_parallel_gearbox",
@@ -83,7 +81,6 @@
     "create_connected_encased:zinc_centrifugal_clutch",
     "create_connected_encased:zinc_freewheel_clutch",
     "create_connected_encased:zinc_overstress_clutch",
-    "create_connected_encased:zinc_fluid_vessel",
     "create_connected_encased:brass_shear_pin",
     "create_connected_encased:copper_shear_pin",
     "create_connected_encased:zinc_shear_pin",
@@ -98,6 +95,9 @@
     "create_connected_encased:jungle_shear_pin",
     "create_connected_encased:mangrove_shear_pin",
     "create_connected_encased:warped_shear_pin",
-    "create_connected_encased:spruce_shear_pin"
+    "create_connected_encased:spruce_shear_pin",
+    "create_connected_encased:andesite_fluid_vessel",
+    "create_connected_encased:brass_fluid_vessel",
+    "create_connected_encased:zinc_fluid_vessel"
   ]
 }

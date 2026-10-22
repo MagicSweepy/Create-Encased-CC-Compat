@@ -1,4 +1,8 @@
 {
+  "block.create_connected_encased.andesite_fluid_vessel.tooltip.behaviour1": "_Cycle_ window shapes.",
+  "block.create_connected_encased.andesite_fluid_vessel.tooltip.condition1": "When R-Clicked with Wrench",
+  "block.create_connected_encased.andesite_fluid_vessel.tooltip.summary": "A _horizontal_ fluid tank. Less efficient when used as a boiler.",
+
   "block.create_connected_encased.brass_brake.tooltip.summary": "A device that produces _immense stress_ when powered, halting the network by _overstressing_ it.",
   "block.create_connected_encased.brass_gearbox.tooltip.summary": "A gearbox where the rotation direction of all 4 sides are _independently configurable with a wrench_.",
   "block.create_connected_encased.brass_centrifugal_clutch.tooltip.summary": "A clutch that is only _coupled_ if the _input RPM_ meets a configurable threshold.",
@@ -8,9 +12,11 @@
   "block.create_connected_encased.brass_overstress_clutch.tooltip.condition1": "When R-Clicked with Wrench",
   "block.create_connected_encased.brass_overstress_clutch.tooltip.summary": "A clutch that _uncouples_ after a set delay when the network is _overstressed_.",
   "block.create_connected_encased.brass_six_way_gearbox.tooltip.summary": "A gearbox with shafts on _all 6 sides_. Top and bottom spin at _half speed_.",
-  "item.create_connected_encased.brass_vertical_brass_gearbox.tooltip.summary": "A gearbox where the rotation direction of all 4 sides are _independently configurable_ with a wrench.",
   "block.create_connected_encased.brass_vertical_six_way_gearbox.tooltip.summary": "A gearbox with shafts on _all 6 sides_. Top and bottom spin at _half speed_.",
   "block.create_connected_encased.brass_shear_pin.tooltip.summary": "A single-use connector that _breaks_ when the network is _overstressed_.",
+  "block.create_connected_encased.brass_fluid_vessel.tooltip.behaviour1": "_Cycle_ window shapes.",
+  "block.create_connected_encased.brass_fluid_vessel.tooltip.condition1": "When R-Clicked with Wrench",
+  "block.create_connected_encased.brass_fluid_vessel.tooltip.summary": "A _horizontal_ fluid tank. Less efficient when used as a boiler.",
 
   "block.create_connected_encased.copper_brake.tooltip.summary": "A device that produces _immense stress_ when powered, halting the network by _overstressing_ it.",
   "block.create_connected_encased.copper_gearbox.tooltip.summary": "A gearbox where the rotation direction of all 4 sides are _independently configurable with a wrench_.",
@@ -21,7 +27,6 @@
   "block.create_connected_encased.copper_overstress_clutch.tooltip.condition1": "When R-Clicked with Wrench",
   "block.create_connected_encased.copper_overstress_clutch.tooltip.summary": "A clutch that _uncouples_ after a set delay when the network is _overstressed_.",
   "block.create_connected_encased.copper_six_way_gearbox.tooltip.summary": "A gearbox with shafts on _all 6 sides_. Top and bottom spin at _half speed_.",
-  "item.create_connected_encased.copper_vertical_brass_gearbox.tooltip.summary": "A gearbox where the rotation direction of all 4 sides are _independently configurable_ with a wrench.",
   "block.create_connected_encased.copper_vertical_six_way_gearbox.tooltip.summary": "A gearbox with shafts on _all 6 sides_. Top and bottom spin at _half speed_.",
   "block.create_connected_encased.copper_shear_pin.tooltip.summary": "A single-use connector that _breaks_ when the network is _overstressed_.",
 
@@ -34,7 +39,6 @@
   "block.create_connected_encased.railway_overstress_clutch.tooltip.condition1": "When R-Clicked with Wrench",
   "block.create_connected_encased.railway_overstress_clutch.tooltip.summary": "A clutch that _uncouples_ after a set delay when the network is _overstressed_.",
   "block.create_connected_encased.railway_six_way_gearbox.tooltip.summary": "A gearbox with shafts on _all 6 sides_. Top and bottom spin at _half speed_.",
-  "item.create_connected_encased.railway_vertical_brass_gearbox.tooltip.summary": "A gearbox where the rotation direction of all 4 sides are _independently configurable_ with a wrench.",
   "block.create_connected_encased.railway_vertical_six_way_gearbox.tooltip.summary": "A gearbox with shafts on _all 6 sides_. Top and bottom spin at _half speed_.",
 
   "block.create_connected_encased.shadow_steel_brake.tooltip.summary": "A device that produces _immense stress_ when powered, halting the network by _overstressing_ it.",
@@ -46,7 +50,6 @@
   "block.create_connected_encased.shadow_steel_overstress_clutch.tooltip.condition1": "When R-Clicked with Wrench",
   "block.create_connected_encased.shadow_steel_overstress_clutch.tooltip.summary": "A clutch that _uncouples_ after a set delay when the network is _overstressed_.",
   "block.create_connected_encased.shadow_steel_six_way_gearbox.tooltip.summary": "A gearbox with shafts on _all 6 sides_. Top and bottom spin at _half speed_.",
-  "item.create_connected_encased.shadow_steel_vertical_brass_gearbox.tooltip.summary": "A gearbox where the rotation direction of all 4 sides are _independently configurable_ with a wrench.",
   "block.create_connected_encased.shadow_steel_vertical_six_way_gearbox.tooltip.summary": "A gearbox with shafts on _all 6 sides_. Top and bottom spin at _half speed_.",
 
   "block.create_connected_encased.refined_radiance_brake.tooltip.summary": "A device that produces _immense stress_ when powered, halting the network by _overstressing_ it.",
@@ -58,7 +61,6 @@
   "block.create_connected_encased.refined_radiance_overstress_clutch.tooltip.condition1": "When R-Clicked with Wrench",
   "block.create_connected_encased.refined_radiance_overstress_clutch.tooltip.summary": "A clutch that _uncouples_ after a set delay when the network is _overstressed_.",
   "block.create_connected_encased.refined_radiance_six_way_gearbox.tooltip.summary": "A gearbox with shafts on _all 6 sides_. Top and bottom spin at _half speed_.",
-  "item.create_connected_encased.refined_radiance_vertical_brass_gearbox.tooltip.summary": "A gearbox where the rotation direction of all 4 sides are _independently configurable_ with a wrench.",
   "block.create_connected_encased.refined_radiance_vertical_six_way_gearbox.tooltip.summary": "A gearbox with shafts on _all 6 sides_. Top and bottom spin at _half speed_.",
 
   "block.create_connected_encased.creative_brake.tooltip.summary": "A device that produces _immense stress_ when powered, halting the network by _overstressing_ it.",
@@ -70,7 +72,6 @@
   "block.create_connected_encased.creative_overstress_clutch.tooltip.condition1": "When R-Clicked with Wrench",
   "block.create_connected_encased.creative_overstress_clutch.tooltip.summary": "A clutch that _uncouples_ after a set delay when the network is _overstressed_.",
   "block.create_connected_encased.creative_six_way_gearbox.tooltip.summary": "A gearbox with shafts on _all 6 sides_. Top and bottom spin at _half speed_.",
-  "item.create_connected_encased.creative_vertical_brass_gearbox.tooltip.summary": "A gearbox where the rotation direction of all 4 sides are _independently configurable_ with a wrench.",
   "block.create_connected_encased.creative_vertical_six_way_gearbox.tooltip.summary": "A gearbox with shafts on _all 6 sides_. Top and bottom spin at _half speed_.",
 
   "block.create_connected_encased.industrial_iron_brake.tooltip.summary": "A device that produces _immense stress_ when powered, halting the network by _overstressing_ it.",
@@ -82,7 +83,6 @@
   "block.create_connected_encased.industrial_iron_overstress_clutch.tooltip.condition1": "When R-Clicked with Wrench",
   "block.create_connected_encased.industrial_iron_overstress_clutch.tooltip.summary": "A clutch that _uncouples_ after a set delay when the network is _overstressed_.",
   "block.create_connected_encased.industrial_iron_six_way_gearbox.tooltip.summary": "A gearbox with shafts on _all 6 sides_. Top and bottom spin at _half speed_.",
-  "item.create_connected_encased.industrial_iron_vertical_brass_gearbox.tooltip.summary": "A gearbox where the rotation direction of all 4 sides are _independently configurable_ with a wrench.",
   "block.create_connected_encased.industrial_iron_vertical_six_way_gearbox.tooltip.summary": "A gearbox with shafts on _all 6 sides_. Top and bottom spin at _half speed_.",
 
   "block.create_connected_encased.weathered_iron_brake.tooltip.summary": "A device that produces _immense stress_ when powered, halting the network by _overstressing_ it.",
@@ -94,10 +94,23 @@
   "block.create_connected_encased.weathered_iron_overstress_clutch.tooltip.condition1": "When R-Clicked with Wrench",
   "block.create_connected_encased.weathered_iron_overstress_clutch.tooltip.summary": "A clutch that _uncouples_ after a set delay when the network is _overstressed_.",
   "block.create_connected_encased.weathered_iron_six_way_gearbox.tooltip.summary": "A gearbox with shafts on _all 6 sides_. Top and bottom spin at _half speed_.",
-  "item.create_connected_encased.weathered_iron_vertical_brass_gearbox.tooltip.summary": "A gearbox where the rotation direction of all 4 sides are _independently configurable_ with a wrench.",
   "block.create_connected_encased.weathered_iron_vertical_six_way_gearbox.tooltip.summary": "A gearbox with shafts on _all 6 sides_. Top and bottom spin at _half speed_.",
 
+  "block.create_connected_encased.zinc_brake.tooltip.summary": "A device that produces _immense stress_ when powered, halting the network by _overstressing_ it.",
+  "block.create_connected_encased.zinc_gearbox.tooltip.summary": "A gearbox where the rotation direction of all 4 sides are _independently configurable with a wrench_.",
+  "block.create_connected_encased.zinc_centrifugal_clutch.tooltip.summary": "A clutch that is only _coupled_ if the _input RPM_ meets a configurable threshold.",
+  "block.create_connected_encased.zinc_cross_connector.tooltip.summary": "Relay rotation in two directions _independently_.",
+  "block.create_connected_encased.zinc_freewheel_clutch.tooltip.summary": "A clutch that is only _coupled_ if the input spins in the _correct direction_ as configured.",
+  "block.create_connected_encased.zinc_overstress_clutch.tooltip.behaviour1": "_Reset_ to coupled state.",
+  "block.create_connected_encased.zinc_overstress_clutch.tooltip.condition1": "When R-Clicked with Wrench",
+  "block.create_connected_encased.zinc_overstress_clutch.tooltip.summary": "A clutch that _uncouples_ after a set delay when the network is _overstressed_.",
+  "block.create_connected_encased.zinc_six_way_gearbox.tooltip.summary": "A gearbox with shafts on _all 6 sides_. Top and bottom spin at _half speed_.",
+  "block.create_connected_encased.zinc_vertical_six_way_gearbox.tooltip.summary": "A gearbox with shafts on _all 6 sides_. Top and bottom spin at _half speed_.",
   "block.create_connected_encased.zinc_shear_pin.tooltip.summary": "A single-use connector that _breaks_ when the network is _overstressed_.",
+  "block.create_connected_encased.zinc_fluid_vessel.tooltip.behaviour1": "_Cycle_ window shapes.",
+  "block.create_connected_encased.zinc_fluid_vessel.tooltip.condition1": "When R-Clicked with Wrench",
+  "block.create_connected_encased.zinc_fluid_vessel.tooltip.summary": "A _horizontal_ fluid tank. Less efficient when used as a boiler.",
+
   "block.create_connected_encased.acacia_shear_pin.tooltip.summary": "A single-use connector that _breaks_ when the network is _overstressed_.",
   "block.create_connected_encased.bamboo_shear_pin.tooltip.summary": "A single-use connector that _breaks_ when the network is _overstressed_.",
   "block.create_connected_encased.birch_shear_pin.tooltip.summary": "A single-use connector that _breaks_ when the network is _overstressed_.",

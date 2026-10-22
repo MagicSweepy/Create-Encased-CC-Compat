@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "createcasing:zinc_gearbox"
+    },
+    {
+      "item": "create:large_cogwheel"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "create_connected_encased:zinc_parallel_gearbox"
+  }
+}
