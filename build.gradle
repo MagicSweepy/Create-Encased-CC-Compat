@@ -84,8 +84,7 @@ dependencies {
     implementation("mezz.jei:jei-$minecraft_version-neoforge:$jei_version")
 
     api("dev.latvian.mods:kubejs-neoforge:$kubejs_version")
-    //implementation "maven.modrinth:create-Encased:${create_encased_version}"
-    implementation "fr.iglee42:CreateCasing:1.21.1-1.10.0"
+    implementation "maven.modrinth:create-Encased:${create_encased_version}"
     //implementation "fr.iglee42:CreateCasing:${create_encased_version}"
     implementation "maven.modrinth:create-connected:${create_connected_version}"
     implementation "maven.modrinth:hezpkOYP:S6xZzbRg"
