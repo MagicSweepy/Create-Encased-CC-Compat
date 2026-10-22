@@ -12,15 +12,15 @@ import javax.annotation.Nullable;
 import java.util.function.Function;
 import java.util.function.Supplier;
 
-public class CCETransmissionSet extends SetBase<CCETransmissionSet, CCETransmissionSet.Options> {
+public class CTransmissionSet extends SetBase<CTransmissionSet, CTransmissionSet.Options> {
     private @Nullable BlockEntry<? extends ShearPinBlock> shearPinBlock;
-    private @Nullable Supplier<Function<BlockBehaviour.Properties,? extends ShearPinBlock>> shearPinConstructor;
+    private @Nullable Supplier<Function<BlockBehaviour.Properties, ? extends ShearPinBlock>> shearPinConstructor;
 
     private @Nullable Supplier<BlockEntityType<?>> shearPinBeType;
 
     private final boolean shearPin;
 
-    protected CCETransmissionSet(String name, Options options) {
+    protected CTransmissionSet(String name, Options options) {
         super(name, options);
         shearPin = options.shearPin;
 
@@ -31,7 +31,7 @@ public class CCETransmissionSet extends SetBase<CCETransmissionSet, CCETransmiss
     }
 
 
-    public boolean doesGenerateShearPin(){
+    public boolean doesGenerateShearPin() {
         return shearPin;
     }
 
@@ -46,32 +46,32 @@ public class CCETransmissionSet extends SetBase<CCETransmissionSet, CCETransmiss
     }
 
     @Nullable
-    public Function<BlockBehaviour.Properties,? extends ShearPinBlock> getShearPinConstructor(){
+    public Function<BlockBehaviour.Properties, ? extends ShearPinBlock> getShearPinConstructor() {
         return shearPinConstructor == null ? null : shearPinConstructor.get();
     }
 
     @Nullable
-    public BlockEntityType<?> getShearPinBlockEntityType(){
+    public BlockEntityType<?> getShearPinBlockEntityType() {
         return shearPinBeType == null ? null : shearPinBeType.get();
     }
 
 
-    public void setShearPin(@Nonnull BlockEntry<? extends ShearPinBlock> shearPin){
+    public void setShearPin(@Nonnull BlockEntry<? extends ShearPinBlock> shearPin) {
         if (getShearPinSupplier() != null)
             throw new UnsupportedOperationException("You cannot modify a shearPin that has already been referenced");
         shearPinBlock = shearPin;
     }
 
-    public boolean isInSet(Block block){
-        return  block.equals(getShearPin());
+    public boolean isInSet(Block block) {
+        return block.equals(getShearPin());
     }
 
-    public static class Options extends SetBase.Options<CCETransmissionSet, CCETransmissionSet.Options> {
+    public static class Options extends SetBase.Options<CTransmissionSet, CTransmissionSet.Options> {
         private boolean shearPin;
 
         private @Nullable BlockEntry<? extends ShearPinBlock> existingShearPin;
 
-        private @Nullable Supplier<Function<BlockBehaviour.Properties,? extends ShearPinBlock>> shearPinConstructor;
+        private @Nullable Supplier<Function<BlockBehaviour.Properties, ? extends ShearPinBlock>> shearPinConstructor;
 
         private @Nullable Supplier<BlockEntityType<?>> shearPinBeType;
 
@@ -84,17 +84,17 @@ public class CCETransmissionSet extends SetBase<CCETransmissionSet, CCETransmiss
             return this;
         }
 
-        public Options shearPinConstructor(Supplier<Function<BlockBehaviour.Properties,? extends ShearPinBlock>> constructor){
+        public Options shearPinConstructor(Supplier<Function<BlockBehaviour.Properties, ? extends ShearPinBlock>> constructor) {
             this.shearPinConstructor = constructor;
             return this;
         }
 
-        public Options shaftBlockEntityType(Supplier<BlockEntityType<?>> beType){
+        public Options shaftBlockEntityType(Supplier<BlockEntityType<?>> beType) {
             this.shearPinBeType = beType;
             return this;
         }
 
-        public Options everything(){
+        public Options everything() {
             return shearPin();
         }
 

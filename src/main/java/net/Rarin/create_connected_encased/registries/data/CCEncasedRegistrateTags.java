@@ -6,7 +6,8 @@ import com.tterrag.registrate.providers.RegistrateTagsProvider;
 import net.Rarin.create_connected_encased.CCEncased;
 import net.Rarin.create_connected_encased.registries.CCEncasedTags;
 import net.Rarin.create_connected_encased.sets.casings.CCasingSets;
-import net.Rarin.create_connected_encased.sets.transmissions.CCETransmissionSets;
+import net.Rarin.create_connected_encased.sets.fluids.CFluidSets;
+import net.Rarin.create_connected_encased.sets.transmissions.CTransmissionSets;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
@@ -53,11 +54,15 @@ public class CCEncasedRegistrateTags {
 			consumer.accept(CCEncasedTags.EBlockTags.CENTRIFUGAL_CLUTCHS, CCEncasedTags.EItemTags.CENTRIFUGAL_CLUTCHS, set.getCentrifugalClutch());
 			consumer.accept(CCEncasedTags.EBlockTags.FREEWHEEL_CLUTCHS, CCEncasedTags.EItemTags.FREEWHEEL_CLUTCHS, set.getFreewheelClutch());
 			consumer.accept(CCEncasedTags.EBlockTags.OVERSTRESS_CLUTCHS, CCEncasedTags.EItemTags.OVERSTRESS_CLUTCHS, set.getOverstressClutch());
-			consumer.accept(CCEncasedTags.EBlockTags.FLUID_VESSELS, CCEncasedTags.EItemTags.FLUID_VESSELS, set.getFluidVessel());
+
 		});
 
-		CCETransmissionSets.getSets().forEach(set -> {
+		CTransmissionSets.getSets().forEach(set -> {
 			consumer.accept(CCEncasedTags.EBlockTags.SHEAR_PINS, CCEncasedTags.EItemTags.SHEAR_PINS, set.getShearPin());
+		});
+
+		CFluidSets.getSets().forEach(set -> {
+			consumer.accept(CCEncasedTags.EBlockTags.FLUID_VESSELS, CCEncasedTags.EItemTags.FLUID_VESSELS, set.getFluidVessel());
 		});
 	}
 

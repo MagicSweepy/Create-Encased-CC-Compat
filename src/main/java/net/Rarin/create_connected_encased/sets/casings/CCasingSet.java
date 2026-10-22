@@ -1,13 +1,10 @@
 package net.Rarin.create_connected_encased.sets.casings;
 
 import com.google.common.base.Preconditions;
-import com.hlysine.create_connected.content.fluidvessel.FluidVesselBlockEntity;
 import com.simibubi.create.foundation.block.connected.CTSpriteShiftEntry;
-import com.tterrag.registrate.util.entry.BlockEntityEntry;
 import net.Rarin.create_connected_encased.sets.SetBase;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.entity.BlockEntityType;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
@@ -19,9 +16,6 @@ import java.util.stream.Stream;
 public class CCasingSet extends SetBase<CCasingSet, CCasingSet.Options> {
 
     private final Supplier<CTSpriteShiftEntry> ctSprite;
-    private final Supplier<CTSpriteShiftEntry> tankSideCtSprite;
-    private final Supplier<CTSpriteShiftEntry> tankTopCtSprite;
-    private final Supplier<CTSpriteShiftEntry> tankInnerCtSprite;
 
     private @Nullable Supplier<? extends BlockItem> verticalParallelGearboxBlockItem;
     private @Nullable Supplier<? extends BlockItem> verticalSixWayGearboxBlockItem;
@@ -35,8 +29,6 @@ public class CCasingSet extends SetBase<CCasingSet, CCasingSet.Options> {
     private @Nullable Supplier<? extends Block> centrifugalClutchBlock;
     private @Nullable Supplier<? extends Block> freewheelClutchBlock;
     private @Nullable Supplier<? extends Block> overstressClutchBlock;
-    private @Nullable Supplier<? extends Block> fluidVesselBlock;
-    private @Nullable BlockEntityEntry<? extends FluidVesselBlockEntity> fluidVesselBlockEntity;
 
     private final boolean casing;
     private final boolean chainCogwheel;
@@ -48,15 +40,11 @@ public class CCasingSet extends SetBase<CCasingSet, CCasingSet.Options> {
     private final boolean centrifugalClutch;
     private final boolean freewheelClutch;
     private final boolean overstressClutch;
-    private final boolean fluidVessel;
 
     protected CCasingSet(String name, Options options) {
         super(name, options);
-        this.tankSideCtSprite = options.tankSideCtSprite;
-        this.tankTopCtSprite = options.tankTopCtSprite;
-        this.tankInnerCtSprite = options.tankInnerCtSprite;
 
-        Preconditions.checkNotNull(options.ctSprite,"Connected Texture Sprite Supplier for casing set "+ name +" can't be null");
+        Preconditions.checkNotNull(options.ctSprite, "Connected Texture Sprite Supplier for casing set " + name + " can't be null");
         ctSprite = options.ctSprite;
         casingBlock = options.existingCasing;
         casing = options.casing;
@@ -69,10 +57,11 @@ public class CCasingSet extends SetBase<CCasingSet, CCasingSet.Options> {
         centrifugalClutch = options.centrifugalClutch;
         freewheelClutch = options.freewheelClutch;
         overstressClutch = options.overstressClutch;
-        fluidVessel = options.fluidVessel;
 
-        if (options.existingVerticalParallelGearboxItem != null) verticalParallelGearboxBlockItem = options.existingVerticalParallelGearboxItem;
-        if (options.existingVerticalSixWayGearboxItem != null) verticalSixWayGearboxBlockItem = options.existingVerticalSixWayGearboxItem;
+        if (options.existingVerticalParallelGearboxItem != null)
+            verticalParallelGearboxBlockItem = options.existingVerticalParallelGearboxItem;
+        if (options.existingVerticalSixWayGearboxItem != null)
+            verticalSixWayGearboxBlockItem = options.existingVerticalSixWayGearboxItem;
         if (options.existingChainCogwheel != null) chainCogwheelBlock = options.existingChainCogwheel;
         if (options.existingBrake != null) brakeBlock = options.existingBrake;
         if (options.existingParallelGearbox != null) parallelGearboxBlock = options.existingParallelGearbox;
@@ -82,43 +71,47 @@ public class CCasingSet extends SetBase<CCasingSet, CCasingSet.Options> {
         if (options.existingCentrifugalClutch != null) centrifugalClutchBlock = options.existingCentrifugalClutch;
         if (options.existingFreewheelClutch != null) freewheelClutchBlock = options.existingFreewheelClutch;
         if (options.existingOverstressClutch != null) overstressClutchBlock = options.existingOverstressClutch;
-        if (options.existingFluidVessel != null) fluidVesselBlock = options.existingFluidVessel;
     }
 
-    public boolean doesGenerateCasing(){
+    public boolean doesGenerateCasing() {
         return casing;
     }
-    public boolean doesGenerateChainCogwheel(){
+
+    public boolean doesGenerateChainCogwheel() {
         return chainCogwheel;
     }
-    public boolean doesGenerateBrake(){
+
+    public boolean doesGenerateBrake() {
         return brake;
     }
-    public boolean doesGenerateParallelGearbox(){
+
+    public boolean doesGenerateParallelGearbox() {
         return parallelGearbox;
     }
-    public boolean doesGenerateSixWayGearbox(){
+
+    public boolean doesGenerateSixWayGearbox() {
         return sixWayGearbox;
     }
-    public boolean doesGenerateInvertedGearShift(){
+
+    public boolean doesGenerateInvertedGearShift() {
         return invertedGearShift;
     }
-    public boolean doesGenerateInvertedClutch(){
+
+    public boolean doesGenerateInvertedClutch() {
         return invertedClutch;
     }
-    public boolean doesGenerateCentrifugalClutch(){
+
+    public boolean doesGenerateCentrifugalClutch() {
         return centrifugalClutch;
     }
-    public boolean doesGenerateFreewheelClutch(){
+
+    public boolean doesGenerateFreewheelClutch() {
         return freewheelClutch;
     }
-    public boolean doesGenerateOverstressClutch(){
+
+    public boolean doesGenerateOverstressClutch() {
         return overstressClutch;
     }
-    public boolean doesGenerateFluidVessel(){
-        return fluidVessel;
-    }
-
 
     @Nullable
     public Supplier<? extends Block> getCasingSupplier() {
@@ -173,11 +166,6 @@ public class CCasingSet extends SetBase<CCasingSet, CCasingSet.Options> {
     @Nullable
     public Supplier<? extends Block> getOverstressClutchSupplier() {
         return overstressClutchBlock;
-    }
-
-    @Nullable
-    public Supplier<? extends Block> getFluidVesselSupplier() {
-        return fluidVesselBlock;
     }
 
     @Nullable
@@ -245,112 +233,73 @@ public class CCasingSet extends SetBase<CCasingSet, CCasingSet.Options> {
         return overstressClutchBlock == null ? null : overstressClutchBlock.get();
     }
 
-    @Nullable
-    public Block getFluidVessel() {
-        return fluidVesselBlock == null ? null : fluidVesselBlock.get();
-    }
-
-    public CTSpriteShiftEntry getTankSideSprite() {
-        return tankSideCtSprite.get();
-    }
-
-    public CTSpriteShiftEntry getTankTopSprite() {
-        return tankTopCtSprite.get();
-    }
-
-    public CTSpriteShiftEntry getTankInnerSprite() {
-        return tankInnerCtSprite.get();
-    }
-
-    public void setCasing(@Nonnull Supplier<? extends Block> casing){
+    public void setCasing(@Nonnull Supplier<? extends Block> casing) {
         if (getCasingSupplier() != null)
             throw new UnsupportedOperationException("You cannot modify a casing that has already been referenced");
         casingBlock = casing;
     }
 
-    public void setChainCogwheel(@Nonnull Supplier<? extends Block> chainCogwheel){
+    public void setChainCogwheel(@Nonnull Supplier<? extends Block> chainCogwheel) {
         if (getChainCogwheelSupplier() != null)
             throw new UnsupportedOperationException("You cannot modify a chain wheel that has already been referenced");
         chainCogwheelBlock = chainCogwheel;
     }
 
-    public void setBrake(@Nonnull Supplier<? extends Block> brake){
+    public void setBrake(@Nonnull Supplier<? extends Block> brake) {
         if (getBrakeSupplier() != null)
             throw new UnsupportedOperationException("You cannot modify a brake that has already been referenced");
         brakeBlock = brake;
     }
 
-    public void setParallelGearbox(@Nonnull Supplier<? extends Block> parallelGearbox){
+    public void setParallelGearbox(@Nonnull Supplier<? extends Block> parallelGearbox) {
         if (getParallelGearboxSupplier() != null)
             throw new UnsupportedOperationException("You cannot modify a parallel gearbox that has already been referenced");
         parallelGearboxBlock = parallelGearbox;
     }
 
-    public void setSixWayGearbox(@Nonnull Supplier<? extends Block> sixWayGearbox){
+    public void setSixWayGearbox(@Nonnull Supplier<? extends Block> sixWayGearbox) {
         if (getSixWayGearboxSupplier() != null)
             throw new UnsupportedOperationException("You cannot modify a six way gearbox that has already been referenced");
         sixWayGearboxBlock = sixWayGearbox;
     }
 
-    public void setInvertedGearShift(@Nonnull Supplier<? extends Block> invertedGearShift){
+    public void setInvertedGearShift(@Nonnull Supplier<? extends Block> invertedGearShift) {
         if (getInvertedGearShiftSupplier() != null)
             throw new UnsupportedOperationException("You cannot modify a inverted gearshift that has already been referenced");
         invertedGearShiftBlock = invertedGearShift;
     }
 
-    public void setInvertedClutch(@Nonnull Supplier<? extends Block> invertedClutch){
+    public void setInvertedClutch(@Nonnull Supplier<? extends Block> invertedClutch) {
         if (getInvertedClutchSupplier() != null)
             throw new UnsupportedOperationException("You cannot modify a inverted clutch that has already been referenced");
         invertedClutchBlock = invertedClutch;
     }
 
-    public void setCentrifugalClutch(@Nonnull Supplier<? extends Block> centrifugalClutch){
+    public void setCentrifugalClutch(@Nonnull Supplier<? extends Block> centrifugalClutch) {
         if (getCentrifugalClutchSupplier() != null)
             throw new UnsupportedOperationException("You cannot modify a centrifugal clutch that has already been referenced");
         centrifugalClutchBlock = centrifugalClutch;
     }
 
-    public void setFreewheelClutch(@Nonnull Supplier<? extends Block> freewheelClutch){
+    public void setFreewheelClutch(@Nonnull Supplier<? extends Block> freewheelClutch) {
         if (getFreewheelClutchSupplier() != null)
             throw new UnsupportedOperationException("You cannot modify a freewheel clutch that has already been referenced");
         freewheelClutchBlock = freewheelClutch;
     }
 
-    public void setOverstressClutch(@Nonnull Supplier<? extends Block> overstressClutch){
+    public void setOverstressClutch(@Nonnull Supplier<? extends Block> overstressClutch) {
         if (getOverstressClutchSupplier() != null)
             throw new UnsupportedOperationException("You cannot modify a overstress clutch that has already been referenced");
         overstressClutchBlock = overstressClutch;
     }
 
-    @Nullable
-    public BlockEntityEntry<? extends FluidVesselBlockEntity> getFluidVesselBlockEntitySupplier() {
-        return fluidVesselBlockEntity;
-    }
-
-    @Nullable
-    public BlockEntityType<? extends FluidVesselBlockEntity> getFluidTankBlockEntityType() {
-        return fluidVesselBlockEntity == null ? null : fluidVesselBlockEntity.get();
-    }
-
-    public void setFluidVesselBlockEntity(@Nonnull BlockEntityEntry<? extends FluidVesselBlockEntity> type) {
-        if (fluidVesselBlockEntity != null)
-            throw new UnsupportedOperationException("You cannot modify a fluid vessel block entity that has already been referenced");
-        fluidVesselBlockEntity = type;
-    }
-
-    public void setFluidVessel(@Nonnull Supplier<? extends Block> fluidVessel){
-        if (getFluidVesselSupplier() != null)
-            throw new UnsupportedOperationException("You cannot modify a overstress clutch that has already been referenced");
-        fluidVesselBlock = fluidVessel;
-    }
-
-    public void setVerticalParallelGearboxItem(@Nonnull Supplier<? extends BlockItem> gearbox){
+    public void setVerticalParallelGearboxItem(@Nonnull Supplier<? extends BlockItem> gearbox) {
         if (getVerticalParallelGearboxItemSupplier() != null)
             throw new UnsupportedOperationException("You cannot modify a vertical gearbox item that has already been referenced");
         verticalParallelGearboxBlockItem = gearbox;
     }
 
-    public void setVerticalSixWayGearboxItem(@Nonnull Supplier<? extends BlockItem> gearbox){
+    public void setVerticalSixWayGearboxItem(@Nonnull Supplier<? extends BlockItem> gearbox) {
         if (getVerticalSixWayGearboxItemSupplier() != null)
             throw new UnsupportedOperationException("You cannot modify a vertical gearbox item that has already been referenced");
         verticalSixWayGearboxBlockItem = gearbox;
@@ -370,7 +319,7 @@ public class CCasingSet extends SetBase<CCasingSet, CCasingSet.Options> {
 
     }
 
-    public List<Block> getAllBlocks(){
+    public List<Block> getAllBlocks() {
         return Stream.of(
                 getCasing(),
                 getChainCogwheel(),
@@ -381,16 +330,12 @@ public class CCasingSet extends SetBase<CCasingSet, CCasingSet.Options> {
                 getInvertedClutch(),
                 getCentrifugalClutch(),
                 getFreewheelClutch(),
-                getOverstressClutch(),
-                getFluidVessel()
+                getOverstressClutch()
         ).filter(Objects::nonNull).toList();
     }
 
     public static class Options extends SetBase.Options<CCasingSet, CCasingSet.Options> {
         private @Nullable Supplier<CTSpriteShiftEntry> ctSprite;
-        private Supplier<CTSpriteShiftEntry> tankSideCtSprite = ()->null;
-        private Supplier<CTSpriteShiftEntry> tankTopCtSprite = ()->null;
-        private Supplier<CTSpriteShiftEntry> tankInnerCtSprite = ()->null;
         private boolean casing;
         private boolean chainCogwheel;
         private boolean brake;
@@ -401,7 +346,6 @@ public class CCasingSet extends SetBase<CCasingSet, CCasingSet.Options> {
         private boolean centrifugalClutch;
         private boolean freewheelClutch;
         private boolean overstressClutch;
-        private boolean fluidVessel;
 
         private @Nullable Supplier<? extends BlockItem> existingVerticalParallelGearboxItem;
         private @Nullable Supplier<? extends BlockItem> existingVerticalSixWayGearboxItem;
@@ -415,7 +359,6 @@ public class CCasingSet extends SetBase<CCasingSet, CCasingSet.Options> {
         private @Nullable Supplier<? extends Block> existingCentrifugalClutch;
         private @Nullable Supplier<? extends Block> existingFreewheelClutch;
         private @Nullable Supplier<? extends Block> existingOverstressClutch;
-        private @Nullable Supplier<? extends Block> existingFluidVessel;
 
         public Options() {
             ctSprite = null;
@@ -424,84 +367,72 @@ public class CCasingSet extends SetBase<CCasingSet, CCasingSet.Options> {
         }
 
         public Options ctSprite(Supplier<CTSpriteShiftEntry> ctSprite) {
-            Preconditions.checkNotNull(ctSprite,"Connected Texture Sprite Supplier can't be null");
+            Preconditions.checkNotNull(ctSprite, "Connected Texture Sprite Supplier can't be null");
             this.ctSprite = ctSprite;
             return this;
         }
 
         public Options casing() {
-            Preconditions.checkState(existingCasing == null,"Cannot create a casing if an existing casing was already set");
+            Preconditions.checkState(existingCasing == null, "Cannot create a casing if an existing casing was already set");
             this.casing = true;
             return this;
         }
 
-        public Options chainCogwheel(){
+        public Options chainCogwheel() {
             this.chainCogwheel = true;
             return this;
         }
 
-        public Options brake(){
+        public Options brake() {
             this.brake = true;
             return this;
         }
 
-        public Options parallelGearbox(){
+        public Options parallelGearbox() {
             this.parallelGearbox = true;
             return this;
         }
 
-        public Options sixWayGearbox(){
+        public Options sixWayGearbox() {
             this.sixWayGearbox = true;
             return this;
         }
 
-        public Options invertedGearShift(){
+        public Options invertedGearShift() {
             this.invertedGearShift = true;
             return this;
         }
 
-        public Options invertedClutch(){
+        public Options invertedClutch() {
             this.invertedClutch = true;
             return this;
         }
 
-        public Options centrifugalClutch(){
+        public Options centrifugalClutch() {
             this.centrifugalClutch = true;
             return this;
         }
 
-        public Options freewheelClutch(){
+        public Options freewheelClutch() {
             this.freewheelClutch = true;
             return this;
         }
 
-        public Options overstressClutch(){
+        public Options overstressClutch() {
             this.overstressClutch = true;
             return this;
         }
 
-        public Options fluidVessel(Supplier<CTSpriteShiftEntry> tankSideCtSprite, Supplier<CTSpriteShiftEntry> tankTopCtSprite, Supplier<CTSpriteShiftEntry> tankInnerCtSprite){
-            this.tankSideCtSprite = tankSideCtSprite;
-            this.tankTopCtSprite = tankTopCtSprite;
-            this.tankInnerCtSprite = tankInnerCtSprite;
-            this.fluidVessel = true;
-            return this;
-        }
-
-        public Options kineticBlocks(){
+        public Options kineticBlocks() {
             return chainCogwheel().brake().invertedGearShift();
         }
 
-        public Options ClutchBlocks(){
+        public Options ClutchBlocks() {
             return invertedClutch().centrifugalClutch().freewheelClutch().overstressClutch();
         }
 
-        public Options GearboxBlocks(){
+        public Options GearboxBlocks() {
             return parallelGearbox().sixWayGearbox();
-        }
-
-        public Options FluidBlocks(Supplier<CTSpriteShiftEntry> tankSideCtSprite, Supplier<CTSpriteShiftEntry> tankTopCtSprite, Supplier<CTSpriteShiftEntry> tankInnerCtSprite){
-            return fluidVessel(tankSideCtSprite, tankTopCtSprite, tankInnerCtSprite);
         }
 
         public Options existingCasing(Supplier<? extends Block> casing) {
@@ -561,12 +492,6 @@ public class CCasingSet extends SetBase<CCasingSet, CCasingSet.Options> {
         Options existingOverstressClutch(Supplier<? extends Block> overstressClutch) {
             existingOverstressClutch = overstressClutch;
             this.overstressClutch = false;
-            return this;
-        }
-
-        Options existingFluidVessel(Supplier<? extends Block> fluidVessel) {
-            existingFluidVessel = fluidVessel;
-            this.fluidVessel = false;
             return this;
         }
 

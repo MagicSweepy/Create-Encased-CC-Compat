@@ -2,7 +2,7 @@ package net.Rarin.create_connected_encased.compat.kubejs.builders;
 
 import dev.latvian.mods.kubejs.script.SourceLine;
 import dev.latvian.mods.rhino.util.HideFromJS;
-import net.Rarin.create_connected_encased.sets.transmissions.CCETransmissionSet;
+import net.Rarin.create_connected_encased.sets.transmissions.CTransmissionSet;
 import net.minecraft.world.item.Item;
 
 import java.util.function.Supplier;
@@ -11,7 +11,7 @@ public class TransmissionSetBuilder {
 
     private String name;
     public SourceLine sourceLine;
-    private CCETransmissionSet.Options options;
+    private CTransmissionSet.Options options;
 
 
     /*public TransmissionSetBuilder(String name) {
@@ -26,7 +26,7 @@ public class TransmissionSetBuilder {
     }
 
     @HideFromJS
-    public CCETransmissionSet.Options getOptions() {
+    public CTransmissionSet.Options getOptions() {
         return options;
     }
 

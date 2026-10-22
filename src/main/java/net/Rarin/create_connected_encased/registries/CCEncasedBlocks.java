@@ -1,7 +1,5 @@
 package net.Rarin.create_connected_encased.registries;
 
-import com.hlysine.create_connected.config.FeatureCategory;
-import com.hlysine.create_connected.config.FeatureToggle;
 import com.hlysine.create_connected.content.fluidvessel.FluidVesselBlockEntity;
 import com.hlysine.create_connected.content.fluidvessel.FluidVesselItem;
 import com.hlysine.create_connected.content.parallelgearbox.ParallelGearboxBlock;
@@ -26,7 +24,8 @@ import net.Rarin.create_connected_encased.blocks.*;
 import net.Rarin.create_connected_encased.sets.casings.CCasingSets;
 import net.Rarin.create_connected_encased.client.ClientModelWrappers;
 import net.Rarin.create_connected_encased.config.CCEStress;
-import net.Rarin.create_connected_encased.sets.transmissions.CCETransmissionSets;
+import net.Rarin.create_connected_encased.sets.fluids.CFluidSets;
+import net.Rarin.create_connected_encased.sets.transmissions.CTransmissionSets;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.level.block.Block;
@@ -202,7 +201,7 @@ public class CCEncasedBlocks {
                 .register();
     }
 
-    public static BlockEntry<CustomFluidVesselBlock> createFluidVessel(String name,CTSpriteShiftEntry sideSprite, CTSpriteShiftEntry topSprite, CTSpriteShiftEntry innerSprite, Supplier<BlockEntityType<? extends FluidVesselBlockEntity>> beType) {
+    public static BlockEntry<CustomFluidVesselBlock> createFluidVessel(String name, CTSpriteShiftEntry sideSprite, CTSpriteShiftEntry topSprite, CTSpriteShiftEntry innerSprite, Supplier<BlockEntityType<? extends FluidVesselBlockEntity>> beType) {
         return REGISTRATE.block(name + "_fluid_vessel", p -> new CustomFluidVesselBlock(p, beType))
                 .initialProperties(SharedProperties::copperMetal)
                 .properties(p -> p.noOcclusion()
@@ -232,7 +231,6 @@ public class CCEncasedBlocks {
                 .initialProperties(SharedProperties::stone)
                 .properties(p -> p.mapColor(MapColor.METAL).forceSolidOn())
                 .transform(CCEStress.setNoImpact())
-                .transform(FeatureToggle.register(FeatureCategory.KINETIC))
                 .transform(axeOrPickaxe())
                 .blockstate(CCEncasedBlockStateGens.shearPin(name))
                 .onRegister(CreateRegistrate.blockModel(() -> BracketedKineticBlockModel::new))
@@ -286,6 +284,14 @@ public class CCEncasedBlocks {
             if (set.doesGenerateOverstressClutch())
                 set.setOverstressClutch(createOverstressClutch(set.getName()));
 
+        });
+
+        CTransmissionSets.getSets().forEach(set -> {
+            if (set.doesGenerateShearPin())
+                set.setShearPin(createShearPin(set.getName(), set.getShearPinConstructor()));
+        });
+
+        CFluidSets.getSets().forEach(set -> {
             if (set.doesGenerateFluidVessel()) {
                 BlockEntityEntry<?>[] holder = new BlockEntityEntry<?>[1];
                 BlockEntry<CustomFluidVesselBlock> tank = createFluidVessel(set.getName(), set.getTankSideSprite(), set.getTankTopSprite(), set.getTankInnerSprite(),
@@ -295,11 +301,6 @@ public class CCEncasedBlocks {
                 set.setFluidVessel(tank);
                 set.setFluidVesselBlockEntity(be);
             }
-        });
-
-        CCETransmissionSets.getSets().forEach(set -> {
-            if (set.doesGenerateShearPin())
-                set.setShearPin(createShearPin(set.getName(), set.getShearPinConstructor()));
         });
     }
 

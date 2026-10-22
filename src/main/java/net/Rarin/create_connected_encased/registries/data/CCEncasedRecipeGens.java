@@ -7,8 +7,10 @@ import net.Rarin.create_connected_encased.registries.CCEncasedTags;
 import net.Rarin.create_connected_encased.sets.SetBase;
 import net.Rarin.create_connected_encased.sets.casings.CCasingSet;
 import net.Rarin.create_connected_encased.sets.casings.CCasingSets;
-import net.Rarin.create_connected_encased.sets.transmissions.CCETransmissionSet;
-import net.Rarin.create_connected_encased.sets.transmissions.CCETransmissionSets;
+import net.Rarin.create_connected_encased.sets.fluids.CFluidSet;
+import net.Rarin.create_connected_encased.sets.fluids.CFluidSets;
+import net.Rarin.create_connected_encased.sets.transmissions.CTransmissionSet;
+import net.Rarin.create_connected_encased.sets.transmissions.CTransmissionSets;
 import net.minecraft.advancements.critereon.ItemPredicate;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
@@ -43,12 +45,14 @@ public class CCEncasedRecipeGens extends DeployingRecipeGen {
             addRecipes(set, CCEncasedTags.EItemTags.CENTRIFUGAL_CLUTCHS, CCasingSet::getCentrifugalClutch);
             addRecipes(set, CCEncasedTags.EItemTags.FREEWHEEL_CLUTCHS, CCasingSet::getFreewheelClutch);
             addRecipes(set, CCEncasedTags.EItemTags.OVERSTRESS_CLUTCHS, CCasingSet::getOverstressClutch);
-            addRecipes(set, CCEncasedTags.EItemTags.FLUID_VESSELS, CCasingSet::getFluidVessel);
         }
 
-        for (CCETransmissionSet set : CCETransmissionSets.getSets()) {
-            addRecipes(set, CCEncasedTags.EItemTags.SHEAR_PINS, CCETransmissionSet::getShearPin);
+        for (CTransmissionSet set : CTransmissionSets.getSets()) {
+            addRecipes(set, CCEncasedTags.EItemTags.SHEAR_PINS, CTransmissionSet::getShearPin);
+        }
 
+        for (CFluidSet set : CFluidSets.getSets()) {
+            addRecipes(set, CCEncasedTags.EItemTags.FLUID_VESSELS, CFluidSet::getFluidVessel);
         }
     }
 

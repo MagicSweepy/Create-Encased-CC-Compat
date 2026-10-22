@@ -3,7 +3,7 @@ package net.Rarin.create_connected_encased.blockEntities;
 import com.hlysine.create_connected.content.shearpin.ShearPinBlockEntity;
 import com.simibubi.create.content.kinetics.base.IRotate;
 import fr.iglee42.createcasing.registries.EncasedSounds;
-import net.Rarin.create_connected_encased.sets.transmissions.CCETransmissionSets;
+import net.Rarin.create_connected_encased.sets.transmissions.CTransmissionSets;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
@@ -43,7 +43,7 @@ public class CustomShearPinBlockEntity extends ShearPinBlockEntity {
     public void tick() {
         super.tick();
 
-        if (CCETransmissionSets.MLDEG.getShearPin() != null && getBlockState().is(CCETransmissionSets.MLDEG.getShearPin())){
+        if (CTransmissionSets.MLDEG.getShearPin() != null && getBlockState().is(CTransmissionSets.MLDEG.getShearPin())){
             if (getSpeed() == 256 || getSpeed() == -256){
                 if (lazyTickCounter % 60 == 0) EncasedSounds.MLDEG.playAt(level,worldPosition,0.25f,0.5f,false);
             }

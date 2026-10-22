@@ -30,8 +30,8 @@ import net.Rarin.create_connected_encased.blockEntities.visuals.CustomShearPinVi
 import net.Rarin.create_connected_encased.blockEntities.visuals.WoodenShearPinVisual;
 import net.Rarin.create_connected_encased.sets.casings.CCasingSet;
 import net.Rarin.create_connected_encased.sets.casings.CCasingSets;
-import net.Rarin.create_connected_encased.sets.transmissions.CCETransmissionSet;
-import net.Rarin.create_connected_encased.sets.transmissions.CCETransmissionSets;
+import net.Rarin.create_connected_encased.sets.transmissions.CTransmissionSet;
+import net.Rarin.create_connected_encased.sets.transmissions.CTransmissionSets;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.neoforged.bus.api.SubscribeEvent;
@@ -121,10 +121,11 @@ public class CCEncasedBlockEntities {
             .renderer(() -> BracketedKineticBlockEntityRenderer::new)
             .register();
 
-    public static void register() {}
+    public static void register() {
+    }
 
     @SubscribeEvent
-    public static void modifyBlockEntity(BlockEntityTypeAddBlocksEvent event){
+    public static void modifyBlockEntity(BlockEntityTypeAddBlocksEvent event) {
         register(event, CHAIN_COGWHEEL.get(), CCasingSet::getChainCogwheel, CCasingSet::doesGenerateChainCogwheel);
         register(event, BRAKE.get(), CCasingSet::getBrake, CCasingSet::doesGenerateBrake);
         register(event, PARALLEL_GEARBOX.get(), CCasingSet::getParallelGearbox, CCasingSet::doesGenerateParallelGearbox);
@@ -135,14 +136,14 @@ public class CCEncasedBlockEntities {
         register(event, FREEWHEEL_CLUTCH.get(), CCasingSet::getFreewheelClutch, CCasingSet::doesGenerateFreewheelClutch);
         register(event, OVERSTRESS_CLUTCH.get(), CCasingSet::getOverstressClutch, CCasingSet::doesGenerateOverstressClutch);
 
-        registerTransmission(event, SHEAR_PIN.get(), CCETransmissionSet::getShearPin, CCETransmissionSet::doesGenerateShearPin, CCETransmissionSet::getShearPinBlockEntityType);
+        registerTransmission(event, SHEAR_PIN.get(), CTransmissionSet::getShearPin, CTransmissionSet::doesGenerateShearPin, CTransmissionSet::getShearPinBlockEntityType);
     }
 
-    public static void register(BlockEntityTypeAddBlocksEvent event, BlockEntityType<?> type, Function<CCasingSet, Block> blockFunction, Predicate<CCasingSet> validateFunction){
-        CCasingSets.getSets().stream().filter(set-> Objects.nonNull(blockFunction.apply(set))).filter(validateFunction).map(blockFunction).forEach(b->event.modify(type,b));
+    public static void register(BlockEntityTypeAddBlocksEvent event, BlockEntityType<?> type, Function<CCasingSet, Block> blockFunction, Predicate<CCasingSet> validateFunction) {
+        CCasingSets.getSets().stream().filter(set -> Objects.nonNull(blockFunction.apply(set))).filter(validateFunction).map(blockFunction).forEach(b -> event.modify(type, b));
     }
 
-    private static void registerTransmission(BlockEntityTypeAddBlocksEvent event, BlockEntityType<?> type, Function<CCETransmissionSet, Block> blockFunction, Predicate<CCETransmissionSet> validateFunction, Function<CCETransmissionSet,BlockEntityType<?>> typeFunction){
-        CCETransmissionSets.getSets().stream().filter(set-> Objects.nonNull(blockFunction.apply(set))).filter(validateFunction).forEach(b->event.modify(typeFunction.apply(b) == null ? type : typeFunction.apply(b),blockFunction.apply(b)));
+    private static void registerTransmission(BlockEntityTypeAddBlocksEvent event, BlockEntityType<?> type, Function<CTransmissionSet, Block> blockFunction, Predicate<CTransmissionSet> validateFunction, Function<CTransmissionSet, BlockEntityType<?>> typeFunction) {
+        CTransmissionSets.getSets().stream().filter(set -> Objects.nonNull(blockFunction.apply(set))).filter(validateFunction).forEach(b -> event.modify(typeFunction.apply(b) == null ? type : typeFunction.apply(b), blockFunction.apply(b)));
     }
 }

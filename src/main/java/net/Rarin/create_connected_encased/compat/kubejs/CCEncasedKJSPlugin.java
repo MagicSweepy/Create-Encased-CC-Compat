@@ -5,8 +5,6 @@ import dev.latvian.mods.kubejs.generator.KubeAssetGenerator;
 import dev.latvian.mods.kubejs.plugin.KubeJSPlugin;
 import dev.latvian.mods.kubejs.script.BindingRegistry;
 import net.Rarin.create_connected_encased.CCEncased;
-import net.Rarin.create_connected_encased.compat.kubejs.wrappers.KJSCTTypeWrapper;
-import net.Rarin.create_connected_encased.compat.kubejs.wrappers.KJSSpriteShiftWrapper;
 
 
 public class CCEncasedKJSPlugin implements KubeJSPlugin {
@@ -17,13 +15,13 @@ public class CCEncasedKJSPlugin implements KubeJSPlugin {
 
     @Override
     public void registerEvents(EventGroupRegistry registry) {
-        registry.register(CCEncasedKJSEvents.GROUP);
+       // registry.register(CCEncasedKJSEvents.GROUP);
     }
 
     @Override
     public void registerBindings(BindingRegistry bindings) {
-        bindings.add("SpriteShifts", KJSSpriteShiftWrapper.class);
-        bindings.add("CTType", KJSCTTypeWrapper.class);
+//        bindings.add("SpriteShifts", KJSSpriteShiftWrapper.class);
+//        bindings.add("CTType", KJSCTTypeWrapper.class);
     }
 
     @Override

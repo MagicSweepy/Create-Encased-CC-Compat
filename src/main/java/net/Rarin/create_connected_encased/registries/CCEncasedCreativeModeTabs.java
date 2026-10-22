@@ -12,7 +12,7 @@ import net.Rarin.create_connected_encased.CCEncased;
 import net.Rarin.create_connected_encased.sets.casings.CCasingSet;
 import net.Rarin.create_connected_encased.sets.casings.CCasingSets;
 import net.Rarin.create_connected_encased.client.ClientItemPredicates;
-import net.Rarin.create_connected_encased.sets.transmissions.CCETransmissionSets;
+import net.Rarin.create_connected_encased.sets.transmissions.CTransmissionSets;
 import net.createmod.catnip.platform.CatnipServices;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
@@ -70,19 +70,23 @@ public class CCEncasedCreativeModeTabs {
         private static Predicate<Item> makeExclusionPredicate() {
             Set<Item> exclusions = new ReferenceOpenHashSet<>();
             exclusions.addAll(CCEncased.hidedItems.stream().map(ItemLike::asItem).toList());
-            exclusions.add(CCETransmissionSets.MLDEG.getShearPin().asItem());
-            if (!AllCreativeModeTabs.BASE_CREATIVE_TAB.get().contains(AllItems.REFINED_RADIANCE.asStack())){
+            exclusions.add(CTransmissionSets.MLDEG.getShearPin().asItem());
+            if (!AllCreativeModeTabs.BASE_CREATIVE_TAB.get().contains(AllItems.REFINED_RADIANCE.asStack())) {
                 exclusions.add(EncasedItems.REFINED_RADIANCE_SHEET.get());
                 exclusions.addAll(CCasingSets.REFINED_RADIANCE.getAllBlocks().stream().map(Block::asItem).toList());
-                if (CCasingSets.REFINED_RADIANCE.getVerticalParallelGearboxItem() != null) exclusions.add(CCasingSets.REFINED_RADIANCE.getVerticalParallelGearboxItem());
-                if (CCasingSets.REFINED_RADIANCE.getVerticalSixWayGearboxItem() != null) exclusions.add(CCasingSets.REFINED_RADIANCE.getVerticalSixWayGearboxItem());
+                if (CCasingSets.REFINED_RADIANCE.getVerticalParallelGearboxItem() != null)
+                    exclusions.add(CCasingSets.REFINED_RADIANCE.getVerticalParallelGearboxItem());
+                if (CCasingSets.REFINED_RADIANCE.getVerticalSixWayGearboxItem() != null)
+                    exclusions.add(CCasingSets.REFINED_RADIANCE.getVerticalSixWayGearboxItem());
             }
 
-            if (!AllCreativeModeTabs.BASE_CREATIVE_TAB.get().contains(AllItems.SHADOW_STEEL.asStack())){
+            if (!AllCreativeModeTabs.BASE_CREATIVE_TAB.get().contains(AllItems.SHADOW_STEEL.asStack())) {
                 exclusions.add(EncasedItems.SHADOW_STEEL_SHEET.get());
                 exclusions.addAll(CCasingSets.SHADOW_STEEL.getAllBlocks().stream().map(Block::asItem).toList());
-                if (CCasingSets.SHADOW_STEEL.getVerticalParallelGearboxItem() != null) exclusions.add(CCasingSets.SHADOW_STEEL.getVerticalParallelGearboxItem());
-                if (CCasingSets.SHADOW_STEEL.getVerticalSixWayGearboxItem() != null) exclusions.add(CCasingSets.SHADOW_STEEL.getVerticalSixWayGearboxItem());
+                if (CCasingSets.SHADOW_STEEL.getVerticalParallelGearboxItem() != null)
+                    exclusions.add(CCasingSets.SHADOW_STEEL.getVerticalParallelGearboxItem());
+                if (CCasingSets.SHADOW_STEEL.getVerticalSixWayGearboxItem() != null)
+                    exclusions.add(CCasingSets.SHADOW_STEEL.getVerticalSixWayGearboxItem());
             }
             return exclusions::contains;
         }
