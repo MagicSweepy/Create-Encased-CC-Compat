@@ -10,7 +10,9 @@
     "CreateCasingCommandMixin",
     "FluidVesselItemMixin",
     "OverstressClutchBlockEntityMixin",
-    "RotationPropagatorMixin"
+    "RecaserItemMixin",
+    "RotationPropagatorMixin",
+    "SteamEngineBlockEntityMixin"
   ],
   "client": [
   ],
