@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "create_connected_encased:brass_fluid_vessel"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "createcasing:brass_fluid_tank"
+  }
+}
